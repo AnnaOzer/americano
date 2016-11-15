@@ -10,6 +10,16 @@ class InGroup
     static protected $schema=[
         'columns'=>[
             'title'=>['type'=>'string'],
+        ],
+        'relations'=>[
+            'inPercents'=>[
+                'type'=>self::HAS_MANY,
+                'model'=>InPercent::class,
+            ],
+            'raws'=>[
+                'type'=>self::HAS_MANY,
+                'model'=>Raw::class,
+            ]
         ]
     ];
 }

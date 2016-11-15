@@ -13,6 +13,12 @@ class InName
             'inNameUs'=>['type'=>'string'],
             'ecNumber'=>['type'=>'string'],
             'casNumber'=>['type'=>'string'],
+        ],
+        'relations'=>[
+            'inPercents'=>[
+                'type'=>self::HAS_MANY,
+                'model'=>InPercent::class,
+            ]
         ]
     ];
 }
