@@ -10,14 +10,14 @@ class m_1479149436_createInGroups
 
     public function up()
     {
-        $this->createTable('inGroups', [
+        $this->createTable('ingroups', [
             'title'=>['type'=>'string']
         ]);
     }
 
     public function down()
     {
-        $this->dropTable('inGroups');
+        $this->dropTable('ingroups');
     }
     
 }

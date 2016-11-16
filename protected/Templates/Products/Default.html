@@ -1,0 +1,19 @@
+{% extends 'Index.html' %}
+
+{% block content %}
+<div class="container">
+    <h1 style="margin-bottom: 20px">Продукция</h1>
+    <a href="/Products/Create" class="btn btn-info">Добавить продукцию</a>
+    <table class="table table-striped" style="margin-top:20px">
+        {% for item in items %}
+            <tr>
+                <td>{{ item.labName }}</td>
+                <td><a href="" class="btn btn-success">Цеховая рецептура</a></td>
+                <td><a href="" class="btn btn-success">Ингредиенты по INCI</a></td>
+                <td><a href="/Products/Delete/?id={{ item.Pk }}" class="btn btn-danger">Удалить</a></td>
+            </tr>
+        {% endfor %}
+    </table>
+    <a href="//Product/Create" class="btn btn-info">Добавить продукцию</a>
+</div>
+{% endblock %}

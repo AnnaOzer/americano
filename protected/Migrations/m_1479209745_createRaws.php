@@ -12,7 +12,7 @@ class m_1479209745_createRaws
     {
         $this->createTable('raws', [
             'title'=>['type'=>'string'],
-            '__inGroup_id'=>['type'=>'link'],
+            '__ingroup_id'=>['type'=>'link'],
         ]);
     }
 

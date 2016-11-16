@@ -4,7 +4,7 @@ namespace App\Models;
 
 use T4\Orm\Model;
 
-class InName
+class Inname
     extends Model
 {
     static protected $schema=[
@@ -15,9 +15,9 @@ class InName
             'casNumber'=>['type'=>'string'],
         ],
         'relations'=>[
-            'inPercents'=>[
+            'inpercents'=>[
                 'type'=>self::HAS_MANY,
-                'model'=>InPercent::class,
+                'model'=>Inpercent::class,
             ]
         ]
     ];

@@ -9,5 +9,11 @@ return [
             'password'=>'',
             'dbname'=>'americano',
             ]
-    ]
+    ],
+
+    'extensions' => [
+        'bootstrap'=>[
+            'theme'=>'cosmo '
+        ]
+]
 ];

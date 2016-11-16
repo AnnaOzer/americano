@@ -10,16 +10,16 @@ class m_1479206450_createInPercents
 
     public function up()
     {
-        $this->createTable('inPercents', [
+        $this->createTable('inpercents', [
             'percent'=>['type'=>'int'],
-            '__inName_id'=>['type'=>'link'],
-            '__inGroup_id'=>['type'=>'link']
+            '__inname_id'=>['type'=>'link'],
+            '__ingroup_id'=>['type'=>'link']
         ]);
     }
 
     public function down()
     {
-        $this->dropTable('inPercents');
+        $this->dropTable('inpercents');
     }
     
 }

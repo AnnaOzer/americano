@@ -10,7 +10,7 @@ class m_1479214895_createRawPercents
 
     public function up()
     {
-        $this->createTable('rawPercents', [
+        $this->createTable('rawpercents', [
             'percent'=>['type'=>'int'],
             'nopercent'=>['type'=>'string'],
             '__raw_id'=>['type'=>'link'],
@@ -20,7 +20,7 @@ class m_1479214895_createRawPercents
 
     public function down()
     {
-        $this->dropTable('rawPercents');
+        $this->dropTable('rawpercents');
     }
     
 }

@@ -4,7 +4,7 @@ namespace App\Models;
 
 use T4\Orm\Model;
 
-class InGroup
+class Ingroup
     extends Model
 {
     static protected $schema=[
@@ -12,9 +12,9 @@ class InGroup
             'title'=>['type'=>'string'],
         ],
         'relations'=>[
-            'inPercents'=>[
+            'inpercents'=>[
                 'type'=>self::HAS_MANY,
-                'model'=>InPercent::class,
+                'model'=>Inpercent::class,
             ],
             'raws'=>[
                 'type'=>self::HAS_MANY,

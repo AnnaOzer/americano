@@ -10,7 +10,7 @@ class m_1479144582_createInNames
 
     public function up()
     {
-        $this->createTable('inNames', [
+        $this->createTable('innames', [
             'inNameEu'=>['type'=>'string'],
             'inNameUs'=>['type'=>'string'],
             'ecNumber'=>['type'=>'string'],
@@ -20,7 +20,7 @@ class m_1479144582_createInNames
 
     public function down()
     {
-        $this->dropTable('inNames');
+        $this->dropTable('innames');
     }
     
 }

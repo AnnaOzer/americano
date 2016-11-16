@@ -13,6 +13,12 @@ class Product
             'rusName'=>['type'=>'string'],
             'engName'=>['type'=>'string'],
             'dateSigned'=>['type'=>'date'],
+        ],
+        'relations'=> [
+            'rawpercents'=>[
+                'type'=>self::HAS_MANY,
+                'model'=>Rawpercent::class,
+            ]
         ]
     ];
 }

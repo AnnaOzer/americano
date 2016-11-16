@@ -12,8 +12,8 @@ class Raw
             'title'=>['type'=>'string'],
         ],
         'relations'=>[
-            'inGroups'=>[
-                'type'=>self::BELONGS_TO, 'model'=>InGroup::class,
+            'ingroup'=>[
+                'type'=>self::BELONGS_TO, 'model'=>Ingroup::class,
             ]
         ]
     ];

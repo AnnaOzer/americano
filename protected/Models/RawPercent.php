@@ -4,7 +4,7 @@ namespace App\Models;
 
 use T4\Orm\Model;
 
-class RawPercent
+class Rawpercent
     extends Model
 {
     static protected $schema=[
