@@ -3,6 +3,7 @@
 namespace App\Controllers;
 
 use App\Models\Ingroup;
+use App\Models\Inpercent;
 use App\Models\Product;
 use App\Models\Raw;
 use T4\Core\Collection;
@@ -108,9 +109,10 @@ class Ingroups
             $line->title = $line->inname->inNameEu;
         };
 
-        $item->inpercents->sort(function($x1, $x2){ return $x1->ordering <=> $x2->ordering; });
 
-        $listArray = $item->inpercents->collect('title');
+        $item2 = $item->inpercents->sort(function(Inpercent $x1, Inpercent $x2){ return ((int)$x1->ordering <=> (int)$x2->ordering); });
+
+        $listArray = $item2->collect('title');
         $listString =implode($listArray, ' (and) ');
 
         $this->data->listing = $listString;
