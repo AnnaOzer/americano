@@ -1,0 +1,30 @@
+{% extends 'Index.html' %}
+
+{% block content %}
+<div class="container">
+    <h1 style="margin-bottom: 20px">Обновить % INCI в смеси {{ item.ingroup.title }}</h1>
+    <form class="container" method="post" action="/Inpercents/Updatesave">
+        <div class="row">
+            <div class="col-xs-4">Чистый Inci</div>
+            <div class="col-xs-8">
+                {{ item.inname.inNameEu }}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-4">%</div>
+            <div class="col-xs-8">
+                <input type="hidden" name="inpercent[id]" value="{{ item.Pk }}">
+                <input type="text" name="inpercent[percent]" value="{{ item.percent }}">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-4">Номер по порядку в списке</div>
+            <div class="col-xs-8">
+                <input type="text" name="inpercent[ordering]" value="{{ item.ordering }}">
+            </div>
+        </div>
+
+        <input type="submit" class="btn btn-info">
+    </form>
+</div>
+{% endblock %}

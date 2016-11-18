@@ -1,0 +1,29 @@
+{% extends 'Index.html' %}
+
+{% block content %}
+<div class="container">
+    <h1 style="margin-bottom: 20px">Редактирование чистого INCI</h1>
+    <form class="container" method="post" action="/Innames/Updatesave">
+        <input type="hidden" name="inname[id]" value="{{ item.Pk }}">
+        <div class="row">
+            <div class="col-xs-4">INCI EU</div>
+            <div class="col-xs-8"><input type="text" name="inname[inNameEu]" value="{{ item.inNameEu }}"></div>
+        </div>
+        <div class="row">
+            <div class="col-xs-4">INCI US</div>
+            <div class="col-xs-8"><input type="text" name="inname[inNameUs]" value="{{ item.inNameUs }}"></div>
+        </div>
+        <div class="row">
+            <div class="col-xs-4">Cas</div>
+            <div class="col-xs-8"><input type="text" name="inname[casNumber]" value="{{ item.casNumber }}"></div>
+        </div>
+        <div class="row">
+            <div class="col-xs-4">Einecs</div>
+            <div class="col-xs-8"><input type="text" name="inname[ecNumber]" value="{{ item.ecNumber }}"></div>
+        </div>
+
+
+        <input type="submit" class="btn btn-info">
+    </form>
+</div>
+{% endblock %}

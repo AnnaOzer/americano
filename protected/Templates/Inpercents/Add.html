@@ -1,0 +1,31 @@
+{% extends 'Index.html' %}
+
+{% block content %}
+<div class="container">
+    <h1 style="margin-bottom: 20px">Добавить компонент в INCI смесь: {{ ingroup.title }}</h1>
+
+    <form class="container" method="post" action="/Inpercents/Addsave">
+
+        <input type="hidden" name="inpercent[__ingroup_id]" value="{{ ingroup.Pk }}">
+        <div class="row">
+            <div class="col-xs-8">Чистый INCI</div>
+            <div class="col-xs-4">
+                %
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-8">
+                {% for inname in innames %}
+                <input type="radio" name="inpercent[__inname_id]" value="{{ inname.Pk }}"> {{ inname.inNameEu }} <br>
+                {% endfor %}
+            </div>
+            <div class="col-xs-4">
+                <input type="text" name="inpercent[percent]">
+            </div>
+        </div>
+
+        <input type="submit" class="btn btn-info">
+    </form>
+
+</div>
+{% endblock %}

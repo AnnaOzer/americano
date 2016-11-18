@@ -1,0 +1,25 @@
+{% extends 'Index.html' %}
+
+{% block content %}
+<div class="container">
+    <h1 style="margin-bottom: 20px">Задать названию сырья главный синоним</h1>
+    <form class="container" method="post" action="/Raws/Changesynsave">
+        <div class="row">
+            <div class="col-xs-4">Рабочему названию</div>
+            <div class="col-xs-8">
+                <input type="hidden" name="raw[id]" value="{{ item.Pk }}">
+                <input type="text" name="raw[title]" value="{{ item.title }}"></div>
+        </div>
+        <div class="row">
+            <div class="col-xs-4">присвоить основной синоним</div>
+            <div class="col-xs-8">
+                {% for mainname in mainnames %}
+                    <input type="radio" name="ingroup[id]" value="{{ mainname.Pk }}">{{ mainname.title }}<Br>
+                {% endfor %}
+                <a href="/Ingroups/Create/?id={{ item.Pk }}" class="btn btn-info">Создать новый основной синоним сырья</a>
+            </div>
+        </div>
+        <input type="submit" class="btn btn-success">
+    </form>
+</div>
+{% endblock %}

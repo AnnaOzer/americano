@@ -1,0 +1,20 @@
+{% extends 'Index.html' %}
+
+{% block content %}
+<div class="container">
+    <h1 style="margin-bottom: 20px">Сырье - названия как пишут в цехе</h1>
+    <a href="/Raws/Create" class="btn btn-info">Добавить сырье</a>
+    <table class="table table-striped" style="margin-top:20px">
+        <tr><th>Используемое название</th><th></th></tr>
+
+        <tr>
+            <td>{{ item.title }}</td>
+
+
+            <td><a href="/Innames/Delete/?id={{ item.Pk }}" class="btn btn-danger">Удалить</a></td>
+        </tr>
+
+    </table>
+    <a href="/Innames/Create" class="btn btn-info">Добавить чиcтый INCI</a>
+</div>
+{% endblock %}

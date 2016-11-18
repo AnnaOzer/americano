@@ -10,13 +10,14 @@ class Inpercent
     static protected $schema=[
         'columns'=>[
             'percent'=>['type'=>'int'],
+            'ordering'=>['type'=>'int'],
         ],
         'relations'=>[
-            'innames'=>[
+            'inname'=>[
                 'type'=>self::BELONGS_TO, 
                 'model'=>Inname::class,
             ],
-            'ingroups'=>[
+            'ingroup'=>[
                 'type'=>self::BELONGS_TO,
                 'model'=>Ingroup::class,
             ]

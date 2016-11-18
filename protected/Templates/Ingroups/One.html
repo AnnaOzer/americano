@@ -1,0 +1,24 @@
+{% extends 'Index.html' %}
+
+{% block content %}
+<div class="container">
+    <h1 style="margin-bottom: 20px">Состав INCI для: {{ item.title }}</h1>
+    <a href="/Inpercents/Add/?id={{ item.Pk }}" class="btn btn-info">Добавить компонент INCI</a>
+    <table class="table table-striped" style="margin-top:20px">
+        <tr>
+            <th>Чистый INCI</th><th>Процент в смеси * 1000</th><th>Порядок перечисления</th>
+            <th></th><th></th>
+        </tr>
+        {% for inpercent in item.inpercents %}
+        <tr>
+            <td>{{ inpercent.inname.inNameEu }}</td>
+            <td>{{ inpercent.percent }}</td>
+            <td>{{ inpercent.ordering }}</td>
+            <td><a href="/Inpercents/Update/?id={{ inpercent.Pk }}" class="btn btn-warning">Редактировать</a></td>
+            <td><a href="" class="btn btn-danger">Удалить</a></td>
+        </tr>
+        {% endfor %}
+    </table>
+    <a href="/Inpercents/Add/?id={{ item.Pk }}" class="btn btn-info">Добавить компонент INCI</a>
+</div>
+{% endblock %}

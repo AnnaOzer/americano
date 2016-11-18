@@ -6,6 +6,23 @@
   {{ publishCss() }}
 </head>
 <body>
+<nav class="navbar navbar-default">
+  <div class="container">
+    <div class="navbar-header">
+      <a class="navbar-brand">
+        Raw&INCI
+      </a>
+    </div>
+    <div class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+       <li><a href="/Products/">Продукция</a></li>
+       <li><a href="/Raws/">Сырье</a></li>
+       <li><a href="/Ingroups/">Смеси INCI</a></li>
+       <li><a href="/Innames/">Чистые INCI</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
 {% block content %}{% endblock %}
 {{ publishJs() }}
 </body>

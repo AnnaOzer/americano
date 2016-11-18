@@ -1,0 +1,23 @@
+{% extends 'Index.html' %}
+
+{% block content %}
+<div class="container">
+    <h1 style="margin-bottom: 20px">Чиcтый INCI</h1>
+    <a href="/Innames/Create" class="btn btn-info">Добавить чистый INCI</a>
+    <table class="table table-striped" style="margin-top:20px">
+        <tr><th>INCI EU</th><th>INCI US</th><th>Cas</th><th>Einecs</th><th></th><th></th></tr>
+        {% for item in items %}
+        <tr>
+            <td>{{ item.inNameEu }}</td>
+            <td>{{ item.inNameUs }}</td>
+            <td>{{ item.casNumber }}</td>
+            <td>{{ item.ecNumber }}</td>
+            <td><a href="/Innames/Update/?id={{ item.Pk }}" class="btn btn-warning">Редактировать</a></td>
+            <td><a href="/Innames/Delete/?id={{ item.Pk }}" class="btn btn-danger">Удалить</a></td>
+
+        </tr>
+        {% endfor %}
+    </table>
+    <a href="/Innames/Create" class="btn btn-info">Добавить сырье</a>
+</div>
+{% endblock %}

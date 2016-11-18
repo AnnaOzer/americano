@@ -14,11 +14,11 @@ class Rawpercent
 
         ],
         'relations'=>[
-            'raws'=>[
+            'raw'=>[
                 'type'=>self::BELONGS_TO, 
                 'model'=>Raw::class,
             ],
-            'products'=>[
+            'product'=>[
                 'type'=>self::BELONGS_TO,
                 'model'=>Product::class,
             ]

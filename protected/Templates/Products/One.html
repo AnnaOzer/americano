@@ -1,0 +1,19 @@
+{% extends 'Index.html' %}
+
+{% block content %}
+<div class="container">
+    <h1 style="margin-bottom: 20px">Рецептура для: {{ item.labName }}</h1>
+    <a href="/Rawpercents/Add/?id={{ item.Pk }}" class="btn btn-info">Добавить ингредиент</a>
+    <table class="table table-striped" style="margin-top:20px">
+        {% for rawpercent in item.rawpercents %}
+        <tr>
+            <td>{{ rawpercent.raw.title }}</td>
+            <td>{{ rawpercent.percent }}</td>
+            <td><a href="/Rawpercents/Update/?id={{ rawpercent.Pk }}" class="btn btn-warning">Редактировать</a></td>
+            <td><a href="" class="btn btn-danger">Удалить</a></td>
+        </tr>
+        {% endfor %}
+    </table>
+    <a href="/Rawpercents/Add/?id={{ item.Pk }}" class="btn btn-info">Добавить ингредиент</a>
+</div>
+{% endblock %}

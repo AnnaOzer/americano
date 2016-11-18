@@ -1,0 +1,24 @@
+{% extends 'Index.html' %}
+
+{% block content %}
+<div class="container">
+    <h1 style="margin-bottom: 20px">Обновить % сырья в рецептуре {{ item.product.labName }}</h1>
+    <form class="container" method="post" action="/Rawpercents/Updatesave">
+        <div class="row">
+            <div class="col-xs-4">Сырье</div>
+            <div class="col-xs-8">
+                {{ item.raw.title }}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-4">%</div>
+            <div class="col-xs-8">
+                <input type="hidden" name="rawpercent[id]" value="{{ item.Pk }}">
+                <input type="text" name="rawpercent[percent]" value="{{ item.percent }}">
+            </div>
+        </div>
+
+        <input type="submit" class="btn btn-info">
+    </form>
+</div>
+{% endblock %}

@@ -10,6 +10,7 @@ class Ingroup
     static protected $schema=[
         'columns'=>[
             'title'=>['type'=>'string'],
+            'ruName'=>['type'=>'string'],
         ],
         'relations'=>[
             'inpercents'=>[
