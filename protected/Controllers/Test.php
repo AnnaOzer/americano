@@ -2,6 +2,7 @@
 
 namespace App\Controllers;
 
+use App\Components\Intervaler;
 use App\Models\Product;
 use T4\Mvc\Controller;
 
@@ -10,6 +11,13 @@ class Test
 {
 
     public function actionDefault()
+    {
+        $t = 35;
+        var_dump((new Intervaler($t))->StandartIntervaler($this->percentage));
+        die;
+    }
+
+    public function actionBar()
     {
         $items = Product::findAll();
         $items->sort(function($x1, $x2){ return strcmp($x1->labName,  $x2->labName); });

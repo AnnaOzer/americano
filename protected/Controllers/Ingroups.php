@@ -16,27 +16,7 @@ class Ingroups
     public function actionDefault()
     {
         $items = \App\Models\Ingroup::findAll(['order'=>'title']);
-
-        foreach ($items as $item)
-        {
-            $item->raws;
-
-            foreach ($item->raws as $line)
-            {
-                if (!empty($line->rawpercents)) {
-
-                    foreach ($line->rawpercents as $line2) {
-                        $line2->product;
-                    }
-                }
-
-
-            }
-
-
         $this->data->items = $items;
-        
-        }
     }
     
     public function actionCreate($id=null)
@@ -96,8 +76,6 @@ class Ingroups
             $line->inname;
         }
 
-
-
         $this->data->item = $item;
     }
 
@@ -109,6 +87,21 @@ class Ingroups
             $line->title = $line->inname->inNameEu;
         };
 
+        $item2 = $item->inpercents->sort(function(Inpercent $x1, Inpercent $x2){ return ((int)$x1->ordering <=> (int)$x2->ordering); });
+
+        $listArray = $item2->collect('title');
+        $listString =implode($listArray, ' (and) ');
+
+        $this->data->listing = $listString;
+    }
+
+    public function actionUsLister($id)
+    {
+        $item=Ingroup::findByPK($id);
+        foreach ($item->inpercents as $line)
+        {
+            $line->title = $line->inname->inNameUs;
+        };
 
         $item2 = $item->inpercents->sort(function(Inpercent $x1, Inpercent $x2){ return ((int)$x1->ordering <=> (int)$x2->ordering); });
 
@@ -118,19 +111,13 @@ class Ingroups
         $this->data->listing = $listString;
     }
 
-    public function actionUsLister($id=1)
+
+    public function actionRawULister($id)
     {
-        $item=Ingroup::findByPK($id);
-        foreach ($item->inpercents as $line)
-        {
-            $line->title = $line->inname->inNameUs;
-        };
+        $item = Ingroup::findByPK($id);
+        $item->raws;
 
-        $listArray = $item->inpercents->collect('title');
-        $listString =implode($listArray, ' (and) ');
-
-        $this->data->listing = $listString;
+        $this->data->item = $item;
     }
-
-
+    
 }

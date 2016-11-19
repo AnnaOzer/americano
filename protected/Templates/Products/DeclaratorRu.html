@@ -1,0 +1,28 @@
+{% extends 'Index.html' %}
+
+{% block content %}
+<div class="container">
+
+    <h1 style="margin-bottom: 20px">Ингредиенты - Декларирование</h1>
+    Product: <h2>{{ item.ruName }}</h2>
+
+    <table class="table table-striped" style="margin-top:20px">
+        <tr>
+            <th>#</th>
+            <th>Ингредиент</th>
+            <th>%</th>
+        </tr>
+
+        {% for rawpercent in item.rawpercents %}
+            <tr>
+                <td>#</td>
+                <td>{{ rawpercent.raw.ingroup.ruName }}</td>
+                <td>{{ rawpercent.raw.ingroup.interval.interval }}</td>
+
+            </tr>
+        {% endfor %}
+
+    </table>
+
+</div>
+{% endblock %}

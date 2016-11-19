@@ -19,15 +19,11 @@
         <tr>
             <td>{{ item.title }}</td>
             <td>
-                <ul>
-                    {% for raw in item.raws %}
-                    <li><a href="/Raws/One/?id={{ raw.Pk }}">{{ raw.title }}</a></li>
-                    {% endfor %}
-                </ul>
+                <t4:block path="//Ingroups/RawULister/(id={{ item.Pk }})">
             </td>
             <td>{{ item.ruName }}</td>
-            <td><t4:block path="//Ingroups/EuLister/(id={{ item.Pk }})" />
-            <td><t4:block path="//Ingroups/UsLister/(id={{ item.Pk }})" />
+            <td><t4:block path="//Ingroups/EuLister/(id={{ item.Pk }})" /></td>
+            <td><t4:block path="//Ingroups/UsLister/(id={{ item.Pk }})" /></td>
 
             <td><a href="/ingroups/One/?id={{ item.Pk }}" class="btn btn-default">Редактировать список INCI</a></td>
             <td><a href="/Ingroups/Update/?id={{ item.Pk }}" class="btn btn-default">Редактировать</a></td>

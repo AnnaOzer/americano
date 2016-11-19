@@ -1,0 +1,28 @@
+{% extends 'Index.html' %}
+
+{% block content %}
+<div class="container">
+
+    <h1 style="margin-bottom: 20px">Ingredients Declaration</h1>
+    Product: <h2>{{ item.engName }}</h2>
+
+    <table class="table table-striped" style="margin-top:20px">
+        <tr>
+            <th>#</th>
+            <th>Ingredient INCI US</th>
+            <th>Ingredient Percentage Interval</th>
+        </tr>
+
+        {% for rawpercent in item.rawpercents %}
+            <tr>
+                <td>#</td>
+                <td><t4:block path="//Ingroups/UsLister/(id={{ item.Pk }})" /></td>
+                <td>{{ rawpercent.raw.ingroup.interval.interval }}</td>
+
+            </tr>
+        {% endfor %}
+
+    </table>
+
+</div>
+{% endblock %}

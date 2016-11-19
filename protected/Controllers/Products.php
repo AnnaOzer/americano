@@ -2,6 +2,7 @@
 
 namespace App\Controllers;
 
+use App\Components\Intervaler;
 use App\Models\Product;
 use App\Models\Raw;
 use App\Models\Rawpercent;
@@ -75,5 +76,86 @@ class Products
         ->save();
         $this->redirect('/Products/One/?id='.$id);
     }
+    
+    public function actionDeclaratorEu($id=1)
+    {
+        $item = Product::findByPK($id);
+        
+        $item->rawpercents;
+        foreach ($item->rawpercents as $rawpercent)
+        {
+
+            $rawpercent->raw->ingroup;
+
+            $rawpercent->raw->ingroup->interval
+                =(new Intervaler($rawpercent->percent))->StandartIntervaler($this->percentage);
+        }
+
+        
+        $item->rawpercents = $item->rawpercents->sort(function($x1, $x2) {
+            return 
+                $x1->raw->ingroup->interval->order <=> $x2->raw->ingroup->interval->order;
+        });
+        
+        $this->data->item = $item;
+              
+    }
+
+    public function actionDeclaratorUs($id=1)
+    {
+        $item = Product::findByPK($id);
+        $item->rawpercents;
+        foreach ($item->rawpercents as $rawpercent)
+        {
+
+            $rawpercent->raw->ingroup;
+
+            $rawpercent->raw->ingroup->interval
+                =(new Intervaler($rawpercent->percent))->StandartIntervaler($this->percentage);
+        }
+
+
+        $item->rawpercents = $item->rawpercents->sort(function($x1, $x2) {
+            return
+                $x1->raw->ingroup->interval->order <=> $x2->raw->ingroup->interval->order;
+        });
+
+        $this->data->item = $item;
+
+    }
+
+    public function actionDeclaratorRu($id)
+    {
+        $item = Product::findByPK($id);
+        $item->rawpercents;
+        foreach ($item->rawpercents as $rawpercent)
+        {
+
+            $rawpercent->raw->ingroup;
+
+            $rawpercent->raw->ingroup->interval
+                =(new Intervaler($rawpercent->percent))->StandartIntervaler($this->percentage);
+        }
+
+
+        $item->rawpercents = $item->rawpercents->sort(function($x1, $x2) {
+            return
+                $x1->raw->ingroup->interval->order <=> $x2->raw->ingroup->interval->order;
+        });
+
+        $this->data->item = $item;
+    }
+    
+    public function declaratorUs($id)
+    {
+
+    }
+
+    public function declaratorRu($id)
+    {
+
+    }
+    
+    
 }
 
