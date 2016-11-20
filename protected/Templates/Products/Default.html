@@ -4,16 +4,29 @@
 <div class="container">
     <h1 style="margin-bottom: 20px">Продукция</h1>
     <a href="/Products/Create" class="btn btn-info">Добавить продукцию</a>
+    <a href="/Products/Details" class="btn btn-success">Детальный просмотр</a>
     <table class="table table-striped" style="margin-top:20px">
+        <tr>
+            <th>Лабораторное название</th
+            ><th>Официальное русское название</th>
+            <th>Официальное английское название</th>
+            <th>Дата подписания рецептуры</th>
+            <th></th>
+            <th></th>
+        </tr>
         {% for item in items %}
-            <tr>
-                <td>{{ item.labName }}</td>
-                <td><a href="/Products/One/" class="btn btn-success">Цеховая рецептура</a></td>
-                <td><a href="" class="btn btn-success">Ингредиенты по INCI</a></td>
-                <td><a href="/Products/Delete/?id={{ item.Pk }}" class="btn btn-danger">Удалить</a></td>
-            </tr>
+        <tr>
+            <td>{{ item.labName }}</td>
+            <td>{{ item.rusName }}</td>
+            <td>{{ item.engName }}</td>
+            <td>{{ item.dateSigned }}</td>
+            <td><a href="/Products/Update/?id={{ item.Pk }}" class="btn btn-warning">Редактировать</a></td>
+            <td><a href="/Products/Delete/?id={{ item.Pk }}" class="btn btn-danger">Удалить</a></td>
+
+        </tr>
         {% endfor %}
     </table>
-    <a href="//Product/Create" class="btn btn-info">Добавить продукцию</a>
+    <a href="/Products/Create" class="btn btn-info">Добавить продукцию</a>
+    <a href="/Products/Details" class="btn btn-success">Детальный просмотр</a>
 </div>
 {% endblock %}

@@ -10,7 +10,7 @@
             <td>{{ rawpercent.raw.title }}</td>
             <td>{{ rawpercent.percent }}</td>
             <td><a href="/Rawpercents/Update/?id={{ rawpercent.Pk }}" class="btn btn-warning">Редактировать</a></td>
-            <td><a href="" class="btn btn-danger">Удалить</a></td>
+            <td><a href="/Rawpercents/Delete/?id={{ rawpercent.Pk }}" class="btn btn-danger">Удалить</a></td>
         </tr>
         {% endfor %}
     </table>

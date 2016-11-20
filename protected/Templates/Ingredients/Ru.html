@@ -1,0 +1,19 @@
+{% extends 'Index.html' %}
+
+{% block content %}
+<div class="container">
+    <h1>Ингредиенты для декларирования</h1>
+    {% for item in items %}
+        <h2>Product: {{ item.rusName }}</h2>
+        <table class="table table-striped">
+            {% for rawpercent in item.rawpercents %}
+            <tr>
+                <td>{{ rawpercent.title }}</td>
+                <td>{{ rawpercent.interval}}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    {% endfor %}
+
+</div>
+{% endblock %}

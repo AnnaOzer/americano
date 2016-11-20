@@ -13,7 +13,11 @@ return [
 
     'extensions' => [
         'bootstrap'=>[
-            'theme'=>'cosmo '
-        ]
-]
+            'theme'=>'cosmo ',
+        ],
+    ],
+
+    'description'=> [
+        'Anna\'s Mega Ingregients Generator v.1.00'
+    ]
 ];

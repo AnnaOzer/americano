@@ -15,9 +15,17 @@ class Ingroups
 
     public function actionDefault()
     {
-        $items = \App\Models\Ingroup::findAll(['order'=>'title']);
+        $items = Ingroup::findAll(['order'=>'title']);
+        
+        foreach ($items as $item) {
+            $item->eu = $item->EuLister($item->getPk());
+            $item->us = $item->UsLister($item->getPk());
+        }
+        
+        
         $this->data->items = $items;
     }
+
     
     public function actionCreate($id=null)
     {
@@ -79,12 +87,16 @@ class Ingroups
         $this->data->item = $item;
     }
 
-    public function actionEuLister($id=1)
+   /*
+    public function actionEuLister($id)
     {
         $item=Ingroup::findByPK($id);
+       // $item->inpercents;
+
         foreach ($item->inpercents as $line)
         {
             $line->title = $line->inname->inNameEu;
+
         };
 
         $item2 = $item->inpercents->sort(function(Inpercent $x1, Inpercent $x2){ return ((int)$x1->ordering <=> (int)$x2->ordering); });
@@ -93,6 +105,8 @@ class Ingroups
         $listString =implode($listArray, ' (and) ');
 
         $this->data->listing = $listString;
+        
+
     }
 
     public function actionUsLister($id)
@@ -111,7 +125,7 @@ class Ingroups
         $this->data->listing = $listString;
     }
 
-
+*/
     public function actionRawULister($id)
     {
         $item = Ingroup::findByPK($id);
@@ -119,5 +133,7 @@ class Ingroups
 
         $this->data->item = $item;
     }
+
+   
     
 }

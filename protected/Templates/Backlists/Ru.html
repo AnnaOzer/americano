@@ -1,0 +1,13 @@
+{% extends 'Index.html' %}
+
+{% block content %}
+<div class="container">
+    <h1>Составы на упаковке по-русски</h1>
+
+    {% for item in items %}
+    <h2>Продукция: {{ item.rusName }}</h2>
+    <div><b>Состав:</b> {{ item.inhalts }}.</div>
+    <hr>
+    {% endfor %}
+</div>
+{% endblock %}

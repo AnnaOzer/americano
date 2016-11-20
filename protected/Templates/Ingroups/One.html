@@ -11,11 +11,11 @@
         </tr>
         {% for inpercent in item.inpercents %}
         <tr>
-            <td>{{ inpercent.inname.inNameEu }}</td>
+            <td><a href="/Innames/Update?id={{ inpercent.__inname_id }}">{{ inpercent.inname.inNameEu }}</a></td>
             <td>{{ inpercent.percent }}</td>
             <td>{{ inpercent.ordering }}</td>
             <td><a href="/Inpercents/Update/?id={{ inpercent.Pk }}" class="btn btn-warning">Редактировать</a></td>
-            <td><a href="" class="btn btn-danger">Удалить</a></td>
+            <td><a href="/Inpercents/Delete/?id={{ inpercent.Pk }}" class="btn btn-danger">Удалить</a></td>
         </tr>
         {% endfor %}
     </table>

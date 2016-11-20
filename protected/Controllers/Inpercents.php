@@ -16,9 +16,9 @@ class Inpercents
 
     public function actionDefault()
     {
-        
+
     }
-    
+
     public function actionUpdate($id)
     {
         $item = Inpercent::findByPk($id);
@@ -31,14 +31,14 @@ class Inpercents
     {
         $item = (Inpercent::findByPK($inpercent['id']))
             ->fill($inpercent)
-            ->save();
-        $this->redirect('/Ingroups/One/?id='.$item->__ingroup_id);
+        ->save();
+        $this->redirect('/Ingroups/One/?id=' . $item->__ingroup_id);
     }
-    
+
     public function actionAdd($id)
     {
         $ingroup = Ingroup::findByPK($id);
-        $innames = Inname::findAll(['order'=>'inNameEu']);
+        $innames = Inname::findAll(['order' => 'inNameEu']);
         $this->data->ingroup = $ingroup;
         $this->data->innames = $innames;
     }
@@ -53,15 +53,23 @@ class Inpercents
 
     public function actionOne($id)
     {
-        $item=Ingroup::findByPK($id);
-        if(empty($item)) {
+        $item = Ingroup::findByPK($id);
+        if (empty($item)) {
             $this->redirect('/Ingroups/');
         }
         $item->inpercents;
 
-        foreach ($item->inpercents as $line)
-        {
+        foreach ($item->inpercents as $line) {
             $line->inname;
         }
+    }
+
+    public function actionDelete($id)
+    {
+        $item = Inpercent::findByPk($id);
+        if (!empty($item)) {
+            $item->delete();
+        }
+        $this->redirect('/Ingroups/');
     }
 }

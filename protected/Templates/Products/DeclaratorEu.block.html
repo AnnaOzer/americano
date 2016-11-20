@@ -1,0 +1,9 @@
+
+        Contents:
+        {% for rawpercent in item.rawpercents %}
+
+            <t4:block path="//Ingroups/EuLister/(id={{ rawpercent.raw.ingroup.Pk}})" />
+
+        {% endfor %}
+
+

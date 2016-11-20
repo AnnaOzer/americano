@@ -1,0 +1,13 @@
+{% extends 'Index.html' %}
+
+{% block content %}
+    <div class="container">
+        <h1>European INCI on packaging</h1>
+
+        {% for item in items %}
+            <h2>Product: {{ item.engName }}</h2>
+            <div><b>Ingredients:</b> {{ item.inhalts }}.</div>
+            <hr>
+        {% endfor %}
+    </div>
+{% endblock %}

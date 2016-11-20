@@ -47,4 +47,14 @@ class Rawpercents
             ->save();
         $this->redirect('/Products/One/?id=' . $rawpercent['__product_id']);
     }
+
+    public function actionDelete($id)
+    {
+        $item=Rawpercent::findByPk($id);
+        if(!empty($item)) {
+            $item->delete();
+        }
+        $this->redirect('/Products/One/?id='. $item['__product_id']);
+    }
+
 }
