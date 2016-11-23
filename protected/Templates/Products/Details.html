@@ -11,8 +11,8 @@
         {% for item in items %}
             <tr>
                 <td>{{ item.labName }}</td>
-                <td><a href="/Products/One/" class="btn btn-success">Цеховая рецептура</a></td>
-                <td><t4:block path="//Products/DeclaratorEu/(id={{ item.Pk }})" /></td>
+                <td><a href="/Products/One/?id={{ item.Pk }}" class="btn btn-success">Цеховая рецептура</a></td>
+                <!--<td><t4:block path="//Products/DeclaratorEu/(id={{ item.Pk }})" /></td>-->
                 <td></td>
             </tr>
         {% endfor %}

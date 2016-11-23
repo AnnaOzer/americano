@@ -12,7 +12,7 @@ class Raws
 
     public function actionDefault()
     {
-        $items=Raw::findAll();
+        $items=Raw::findAll(['order'=>'title']);
 
         foreach ($items as $item) {
             $item->ingroup1=$item->ingroup->title;
@@ -41,7 +41,9 @@ class Raws
 
     public function actionCreate()
     {
-
+        
+        $defaultIngroup = Ingroup::findByColumn('title','Не определено');
+        $this->data->defaultIngroup = $defaultIngroup;
     }
 
     public function actionSave($raw)
@@ -78,6 +80,15 @@ class Raws
 
         $this->redirect('/Raws/');
 
+    }
+
+    public function actionDelete($id)
+    {
+        $item=Raw::findByPk($id);
+        if(!empty($item)) {
+            $item->delete();
+        }
+        $this->redirect('/Raws/');
     }
     
 }

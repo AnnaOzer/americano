@@ -4,6 +4,7 @@
 <div class="container">
     <h1 style="margin-bottom: 20px">Обновить % сырья в рецептуре {{ item.product.labName }}</h1>
     <form class="container" method="post" action="/Rawpercents/Updatesave">
+        <input type="hidden" name="rawpercent[__product_id]" value="{{ item.product.Pk }}">
         <div class="row">
             <div class="col-xs-4">Сырье</div>
             <div class="col-xs-8">

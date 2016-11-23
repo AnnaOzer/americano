@@ -70,4 +70,5 @@ class Ingroup
         return $item->ruName;
 
     }
+
 }

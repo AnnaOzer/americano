@@ -64,7 +64,7 @@ class Products
         $this->redirect('/Products/');
     }
 
-    public function actionOne($id=1){
+    public function actionOne($id){
         $item=Product::findByPK($id);
         if(empty($item)) {
             $this->redirect('/Products/');
@@ -75,7 +75,14 @@ class Products
         {
             $line->raw;
         }
-
+        
+        $sum=0;
+        foreach ($item->rawpercents as $rawpercent)
+        {
+            $sum+=$rawpercent->percent;
+        }
+        $item->sumPercent =$sum;
+        $item->freePercent = 100000-$sum;
         
 
         $this->data->item = $item;

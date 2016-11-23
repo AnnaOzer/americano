@@ -3,6 +3,8 @@
 {% block content %}
 <div class="container">
     <h1 style="margin-bottom: 20px">Рецептура для: {{ item.labName }}</h1>
+    <p>Рецептура заполнена на: {{ item.sumPercent }},<br>
+    свободна на {{ item.freePercent }}</p>
     <a href="/Rawpercents/Add/?id={{ item.Pk }}" class="btn btn-info">Добавить ингредиент</a>
     <table class="table table-striped" style="margin-top:20px">
         {% for rawpercent in item.rawpercents %}

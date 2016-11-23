@@ -13,7 +13,7 @@ class Innames
 
     public function actionDefault()
     {
-        $items=Inname::findAll();
+        $items=Inname::findAll(['order'=>'inNameEu']);
         $this->data->items = $items;
 
 
@@ -59,6 +59,15 @@ class Innames
             ->fill($inname)
             ->save();
 
+        $this->redirect('/Innames/');
+    }
+
+    public function actionDelete($id)
+    {
+        $item=Inname::findByPk($id);
+        if(!empty($item)) {
+            $item->delete();
+        }
         $this->redirect('/Innames/');
     }
 }

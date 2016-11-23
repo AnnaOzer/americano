@@ -3,7 +3,7 @@
 {% block content %}
 <div class="container">
     <h1>Ingredients for European Notification</h1>
-    {% for item in items %}
+
         <h2>Product: {{ item.engName }}</h2>
         <table class="table table-striped">
             {% for rawpercent in item.rawpercents %}
@@ -13,7 +13,7 @@
             </tr>
             {% endfor %}
         </table>
-    {% endfor %}
+
 
 </div>
 {% endblock %}

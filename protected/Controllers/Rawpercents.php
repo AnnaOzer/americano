@@ -29,7 +29,7 @@ class Rawpercents
         $item = (Rawpercent::findByPK($rawpercent['id']))
             ->fill($rawpercent)
             ->save();
-        $this->redirect('/Products/One/?='.$item->__product_id);
+        $this->redirect('/Products/One/?='.$item->product->getPk());
     }
     
     public function actionAdd($id)
