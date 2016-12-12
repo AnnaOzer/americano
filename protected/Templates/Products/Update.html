@@ -24,6 +24,14 @@
             <div class="col-xs-4">Дата рецептуры</div>
             <div class="col-xs-8"><input type="date" name="product[dateSigned]" value="{{ item.dateSigned }}"></div>
         </div>
+        <div class="row">
+            <div class="col-xs-4">Включить ручное упорядочивание, 0-автоматическое 1-ручное</div>
+            <div class="col-xs-8"><input type="number" name="product[manualOrderingOn]" value="{{ item.manualOrderingOn }}"></div>
+        </div>
+        <div class="row">
+            <div class="col-xs-4">Бантики</div>
+            <div class="col-xs-8"><input type="text" name="product[bantiki]" value="{{ item.bantiki }}"></div>
+        </div>
         <input type="submit" class="btn btn-info">
     </form>
 </div>

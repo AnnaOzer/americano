@@ -13,6 +13,8 @@ class Product
             'rusName'=>['type'=>'string'],
             'engName'=>['type'=>'string'],
             'dateSigned'=>['type'=>'date'],
+            'manualOrderingOn'=>['type'=>'int'],
+            'bantiki'=>['type'=>'string'],
         ],
         'relations'=> [
             'rawpercents'=>[
@@ -44,22 +46,33 @@ class Product
 
         }
 
-        $item->rawpercents = $item->rawpercents->sort(
-            function (Rawpercent $x1, Rawpercent $x2) {
+        if(0==$item->manualOrderingOn) {
+            $item->rawpercents = $item->rawpercents->sort(
+                function (Rawpercent $x1, Rawpercent $x2) {
 
-                if($x1->orderby > 2 || $x2->orderby > 2 ) {
-                    if((int)$x1->orderby !== (int)$x2->orderby  ) {
-                        return ($x2->orderby <=> $x1->orderby);
+                    if ($x1->orderby > 2 || $x2->orderby > 2) {
+                        if ((int)$x1->orderby !== (int)$x2->orderby) {
+                            return ($x2->orderby <=> $x1->orderby);
+                        } else {
+                            return ($x1->priorityby <=> $x2->priorityby);
+                        }
+
                     } else {
                         return ($x1->priorityby <=> $x2->priorityby);
                     }
 
-                } else {
-                    return ($x1->priorityby <=> $x2->priorityby);
                 }
+            );
+        } elseif (1==$item->manualOrderingOn) {
+            $item->rawpercents = $item->rawpercents->sort(
+                function (Rawpercent $x1, Rawpercent $x2) {
 
-            }
-        );
+
+                        return ($x1->manualOrder <=> $x2->manualOrder);
+
+                }
+            );
+        }
 
 
 
@@ -93,24 +106,44 @@ class Product
 
         }
 
-        $item->rawpercents = $item->rawpercents->sort(
-            function (Rawpercent $x1, Rawpercent $x2) {
+        if (1==$item->manualOrderingOn) {
+            $item->rawpercents = $item->rawpercents->filter(
+                function (Rawpercent $x) {
+                    return $x->manualOrder != 0;
+                });
+        }
 
-                if($x1->orderby > 2 || $x2->orderby > 2 ) {
-                    if((int)$x1->orderby !== (int)$x2->orderby  ) {
-                        return ($x2->orderby <=> $x1->orderby);
+        if(0==$item->manualOrderingOn) {
+            $item->rawpercents = $item->rawpercents->sort(
+                function (Rawpercent $x1, Rawpercent $x2) {
+
+                    if ($x1->orderby > 2 || $x2->orderby > 2) {
+                        if ((int)$x1->orderby !== (int)$x2->orderby) {
+                            return ($x2->orderby <=> $x1->orderby);
+                        } else {
+                            return ($x1->priorityby <=> $x2->priorityby);
+                        }
+
                     } else {
                         return ($x1->priorityby <=> $x2->priorityby);
                     }
 
-                } else {
-                    return ($x1->priorityby <=> $x2->priorityby);
                 }
+            );
+        } elseif (1==$item->manualOrderingOn) {
+            $item->rawpercents = $item->rawpercents->sort(
+                function (Rawpercent $x1, Rawpercent $x2) {
 
-            }
-        );
+
+                    return ($x1->manualOrder <=> $x2->manualOrder);
+
+                }
+            );
+        }
+
 
         $listArray = $item->rawpercents->collect('title');
+        $listArray=array_unique($listArray);
         $listString = strtoupper(implode($listArray, ', '));
 
         return $listString;

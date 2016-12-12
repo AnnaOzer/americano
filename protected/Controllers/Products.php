@@ -70,6 +70,11 @@ class Products
             $this->redirect('/Products/');
         }
         $item->rawpercents;
+        $item->rawpercents = $item->rawpercents->sort(
+            function ($x1, $x2) {
+                return $x2->percent <=> $x1->percent;
+            }
+        );
         
         foreach ($item->rawpercents as $line)
         {

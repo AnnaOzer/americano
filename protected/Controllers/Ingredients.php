@@ -91,15 +91,44 @@ class Ingredients
                 $line->interval = $line->StandartInterval($line->percent)['interval'];
 
             }
-
+    /*
             $item2 = $item->rawpercents->sort(
                 function(Rawpercent $x1, Rawpercent $x2)
                 {
                     return ((int)$x1->percent <=> (int)$x2->percent);
                 }
             );
+      */
+            if(0==$item->manualOrderingOn) {
+                $item->rawpercents = $item->rawpercents->sort(
+                    function (Rawpercent $x1, Rawpercent $x2) {
 
-            $item = $item2;
+                        if ($x1->orderby > 2 || $x2->orderby > 2) {
+                            if ((int)$x1->orderby !== (int)$x2->orderby) {
+                                return ($x2->orderby <=> $x1->orderby);
+                            } else {
+                                return ($x1->priorityby <=> $x2->priorityby);
+                            }
+
+                        } else {
+                            return ($x1->priorityby <=> $x2->priorityby);
+                        }
+
+                    }
+                );
+            } elseif (1==$item->manualOrderingOn) {
+                $item->rawpercents = $item->rawpercents->sort(
+                    function (Rawpercent $x1, Rawpercent $x2) {
+
+
+                        return ($x1->manualOrder <=> $x2->manualOrder);
+
+                    }
+                );
+            }
+
+
+            //$item = $item2;
         }
 
         $this->data->items = $items;

@@ -7,10 +7,12 @@
     <a href="/Products/Details" class="btn btn-success">Детальный просмотр</a>
     <table class="table table-striped" style="margin-top:20px">
         <tr>
-            <th>Лабораторное название</th
-            ><th>Официальное русское название</th>
+            <th>Лабораторное название</th>
+            <th>Официальное русское название</th>
             <th>Официальное английское название</th>
+            <th>Бантики</th>
             <th>Дата подписания рецептуры</th>
+            <th>Ручная сортировка ингредиентов</th>
             <th></th>
             <th></th>
         </tr>
@@ -19,11 +21,14 @@
             <td>{{ item.labName }}</td>
             <td>{{ item.rusName }}</td>
             <td>{{ item.engName }}</td>
+            <td>{{ item.bantiki }}</td>
             <td>{{ item.dateSigned }}</td>
+            <td>{{ item.manualOrderingOn }}</td>
             <td><a href="/Products/Update/?id={{ item.Pk }}" class="btn btn-warning">Редактировать</a></td>
             <td><a href="/Products/Delete/?id={{ item.Pk }}" class="btn btn-danger">Удалить</a></td>
 
         </tr>
+
         {% endfor %}
     </table>
     <a href="/Products/Create" class="btn btn-info">Добавить продукцию</a>

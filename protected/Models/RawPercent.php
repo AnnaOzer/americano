@@ -11,6 +11,8 @@ class Rawpercent
         'columns'=>[
             'percent'=>['type'=>'int'],
             'nopercent'=>['type'=>'string'],
+            'manualOrder'=>['type'=>'int'],
+            'decomposition'=>['type'=>'int'],
 
         ],
         'relations'=>[

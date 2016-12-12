@@ -9,9 +9,7 @@
         <input type="hidden" name="rawpercent[__product_id]" value="{{ product.Pk }}">
         <div class="row">
             <div class="col-xs-8">Сырье</div>
-            <div class="col-xs-4">
-                %
-            </div>
+            <div class="col-xs-4">%</div>
         </div>
         <div class="row">
             <div class="col-xs-8">
@@ -20,11 +18,13 @@
                 {% endfor %}
             </div>
             <div class="col-xs-4">
-                <input type="text" name="rawpercent[percent]">
-            </div>
+        </div>
+        <input type="text" name="rawpercent[percent]">
+        <input type="hidden" name="rawpercent[decomposition]" value="0">
         </div>
 
-        <input type="submit" class="btn btn-info">
+
+<input type="submit" class="btn btn-info">
     </form>
 
 </div>

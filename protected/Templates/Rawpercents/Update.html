@@ -16,7 +16,17 @@
             <div class="col-xs-8">
                 <input type="hidden" name="rawpercent[id]" value="{{ item.Pk }}">
                 <input type="text" name="rawpercent[percent]" value="{{ item.percent }}">
+
             </div>
+            <div class="col-xs-4">ManualOrder</div>
+            <div class="col-xs-8">
+                <input type="number" name="rawpercent[manualOrder]" value="{{ item.manualOrder }}">
+            </div>
+            <div class="col-xs-4">Decomposition 1 если добавили к цеховой рецептуре, -1 если убрали из цеховой рецептуры</div>
+            <div class="col-xs-8">
+                <input type="number" name="rawpercent[decomposition]" value="{{ item.decomposition }}" value="0">
+            </div>
+
         </div>
 
         <input type="submit" class="btn btn-info">

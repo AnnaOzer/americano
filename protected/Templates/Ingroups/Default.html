@@ -11,6 +11,7 @@
             <th>По-русски для декларации</th>
             <th>INCI EU</th>
             <th>INCI US</th>
+            <th>Приоритет</th>
             <th></th>
             <th></th>
             <th></th>
@@ -24,6 +25,7 @@
             <td>{{ item.ruName }}</td>
             <td>{{ item.eu }}</td>
             <td>{{ item.us }}</td>
+            <td>{{ item.priority }}</td>
 
             <td><a href="/ingroups/One/?id={{ item.Pk }}" class="btn btn-default">Редактировать список INCI</a></td>
             <td><a href="/Ingroups/Update/?id={{ item.Pk }}" class="btn btn-default">Редактировать</a></td>
