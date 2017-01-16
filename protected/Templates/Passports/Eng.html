@@ -1,0 +1,56 @@
+{% extends 'Index.html' %}
+
+{% block content %}
+    {% for item in items %}
+    <article>
+    <h1>{{ item.titleEng }}</h1>
+    <div>{{ item.descriptionEng | raw }}</div>
+        {% for product in item.products %}
+        <article>
+            <h3>{{ product.engName }}</h3>
+
+            <div class="panel panel-default">
+                <div class="panel-heading">Information On Packaging</div>
+
+                <ul class="list-group">
+                    <li class="list-group-item">Product: <strong>{{ product.engName }}</strong></li>
+                    <li class="list-group-item">Volume: <strong>{{ product.volumeEng }}</strong></li>
+                    {% if product.forEng %}
+                        <li class="list-group-item"><strong>{{ product.forEng }}</strong></li>
+                    {% endif %}
+                    {% if product.bantikiEng %}
+                        <li class="list-group-item">Key ingredients: <strong>{{ product.bantikiEng }}</strong></li>
+                    {% endif %}
+
+                    <li class="list-group-item"><t4:block path="//Backlists/UsOne" id="{{ product.Pk }}"/> </li>
+
+                    {% if product.howEng %}
+                    <li class="list-group-item">Directions: <strong>{{ product.howEng }}</strong></li>
+                    {% endif %}
+
+                    {% if product.shortdescEng %}
+                    <li class="list-group-item">Description: <strong>{{ product.shortdescEng }}</strong></li>
+                    {% endif %}
+
+                    {% if product.dangerEng %}
+                    <li class="list-group-item"><strong>{{ product.dangerEng }}</strong></li>
+                    {% endif %}
+
+                </ul>
+            </div>
+
+            <div class="panel panel-default">
+
+                <div class="panel-heading">Description In Catalogue</div>
+                <div class="panel-body">
+                    {{ product.descriptionEng | raw }}
+                </div>
+
+
+            </div>
+
+        </article>
+        {% endfor %}
+    </article>
+    {% endfor %}
+{% endblock %}

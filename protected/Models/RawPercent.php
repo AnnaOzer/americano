@@ -23,7 +23,12 @@ class Rawpercent
             'product'=>[
                 'type'=>self::BELONGS_TO,
                 'model'=>Product::class,
-            ]
+            ],
+            
+            'bantiks'=>[
+                'type'=>self::MANY_TO_MANY,
+                'model'=>Bantik::class,
+            ],
         ]
     ];
 

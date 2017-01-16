@@ -15,13 +15,14 @@ class Products
     public function actionDefault()
     {
         $this->data->items = \App\Models\Product::findAll();
+        
 
     }
 
     public function actionDetails()
     {
         $this->data->items = \App\Models\Product::findAll();
-
+        
     }
     
     public function actionCreate()

@@ -14,13 +14,49 @@ class Product
             'engName'=>['type'=>'string'],
             'dateSigned'=>['type'=>'date'],
             'manualOrderingOn'=>['type'=>'int'],
+                       
+            
+
+            'volume'=>['type'=>'string'],
+            'volumeEng'=>['type'=>'string'],
+            
+            'for'=>['type'=>'string'],
+            'forEng'=>['type'=>'string'],
+            
             'bantiki'=>['type'=>'string'],
+            'bantikiEng'=>['type'=>'string'],
+            
+            'how'=>['type'=>'string'],
+            'howEng'=>['type'=>'string'],
+            
+            'shortdesc'=>['type'=>'text'],
+            'shortdescEng'=>['type'=>'text'],
+            
+            
+            'danger'=>['type'=>'string'],
+            'dangerEng'=>['type'=>'string'],
+
+            'description'=>['type'=>'text'],
+            'descriptionEng'=>['type'=>'text'],
+            
+            'ordering'=>['type'=>'int'],
+            
+            'listRus'=>['type'=>'text'],
         ],
         'relations'=> [
             'rawpercents'=>[
                 'type'=>self::HAS_MANY,
                 'model'=>Rawpercent::class,
-            ]
+            ],
+            'seria'=> [
+                'type'=>self::BELONGS_TO,
+                'model'=>Seria::class,
+            ],
+            'upak'=> [
+                'type'=>self::BELONGS_TO,
+                'model'=>Upak::class,
+            ],
+            
         ]
     ];
 

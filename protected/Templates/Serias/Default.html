@@ -1,0 +1,31 @@
+{% extends 'Index.html' %}
+
+{% block content %}
+<h1>Серии</h1>
+<a href="/Serias/Create">Создать серию</a>
+<table class="table table-striped">
+    <tr>
+        <th>Серия</th>
+        <th>Описание</th>
+        <th>Продукция серии</th>
+        <th></th>
+    </tr>
+    {% for item in items %}
+    <tr>
+        <td>{{ item.title }}</td>
+        <td>{{ item.description | raw }}</td>
+        <td>
+            <ul>
+            {% for product in item.products %}
+                <li>{{ product.rusName }}</li>
+            {% endfor %}
+            </ul>
+        </td>
+        <td><a href="/Serias/Update?id={{ item.Pk }}" class="btn btn-warning">Редактировать серию</a>
+            <a href="/Serias/Delete?id={{ item.Pk }}" class="btn btn-danger">Удалить серию</a>
+            <a href="/Serias/AddProduct?id={{ item.Pk }}" class="btn btn-success">Добавить продукт в серию</a></td>
+    </tr>
+    {% endfor %}
+</table>
+<a href="/Serias/Create">Создать серию</a>
+{% endblock %}

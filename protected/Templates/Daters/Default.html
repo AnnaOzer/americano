@@ -1,0 +1,33 @@
+{% extends 'Index.html' %}
+
+{% block content %}
+<h1>Сроки годности и способы применения</h1>
+<a href="" class="btn btn-default">Добавить способ записи о дате и применении</a>
+<table class="table table-striped">
+    <tr>
+        <th>Название</th>
+        <th>Надписи</th>
+        <th></th>
+    </tr>
+    {% for item in items %}
+    <tr>
+        <td>{{ item.title }}</td>
+        <td>
+            {% for dater in item.daters %}
+
+                {{ dater.titleRus }}
+                <br>
+                {{ dater.titleEng }}
+
+            {% endfor %}
+        </td>
+        <td>
+            <a href="" class="btn btn-warning">Редактировать</a>
+            <a href="" class="btn btn-danger">Удалить</a>
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+<a href="" class="btn btn-default">Добавить способ записи о дате и применении</a>
+
+{% endblock %}

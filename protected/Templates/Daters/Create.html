@@ -1,0 +1,28 @@
+{% extends 'Index.html' %}
+
+{% block content %}
+<div class="container">
+    <h1 style="margin-bottom: 20px">Добавление нового комплекса маркировки сроков годности и применения</h1>
+    <form class="container" method="post" action="/Daters/Save
+            <div class="col-xs-4">Рабочее название</div>
+            <div class="col-xs-8"><input type="text" name="product[labName]"></div>
+        </div>
+
+        <div class="row">
+            <div class="col-xs-4">Официальное русское название</div>
+            <div class="col-xs-8"><input type="text" name="product[rusName]"></div>
+        </div>
+
+        <div class="row">
+            <div class="col-xs-4">Официальное английское название</div>
+            <div class="col-xs-8"><input type="text" name="product[engName]"></div>
+        </div>
+
+        <div class="row">
+            <div class="col-xs-4">Дата рецептуры</div>
+            <div class="col-xs-8"><input type="date" name="product[dateSigned]" value="2010-01-01"></div>
+        </div>
+        <input type="submit" class="btn btn-info">
+    </form>
+</div>
+{% endblock %}

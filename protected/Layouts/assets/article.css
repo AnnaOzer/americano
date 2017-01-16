@@ -1,0 +1,13 @@
+article + article {
+    page-break-before: always;
+}
+
+.extra {
+    font-weight: 700;
+    font-size: larger;
+    font-variant: small-caps;
+}
+
+h1, h2, h3, h4, p {
+    font-size: large;
+}

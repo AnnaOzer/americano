@@ -1,0 +1,36 @@
+{% extends 'Index.html' %}
+
+{% block content %}
+<div class="container">
+    <h1 style="margin-bottom: 20px">Добавление новой серии</h1>
+    <form class="container" method="post" action="/Serias/UpdateSave">
+        <input type="hidden" name="seria[id]" value="{{ item.Pk }}">
+        <div class="row">
+
+            <div class="col-xs-6">Название русское</div>
+            <div class="col-xs-6">Название английское</div>
+        </div>
+        <div class="row">
+
+            <div class="col-xs-6"><input type="text" name="seria[title]" value="{{ item.title }}"></div>
+            <div class="col-xs-6"><input type="text" name="seria[titleEng]" value="{{ item.titleEng }}"></div>
+        </div>
+
+        <div class="row">
+            <div class="col-xs-6">Описание русское</div>
+            <div class="col-xs-6">Описание английское</div>
+        </div>
+        <div class="row">
+            <div class="col-xs-6">
+                <textarea name="seria[description]" cols="70" rows="30">{{ item.description }}</textarea>
+            </div>
+            <div class="col-xs-6">
+                <textarea name="seria[descriptionEng]" cols="70" rows="30">{{ item.descriptionEng }}</textarea>
+            </div>
+        </div>
+
+
+        <input type="submit" class="btn btn-info">
+    </form>
+</div>
+{% endblock %}

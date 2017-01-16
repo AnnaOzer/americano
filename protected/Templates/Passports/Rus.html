@@ -1,0 +1,58 @@
+{% extends 'Index.html' %}
+
+{% block content %}
+    {% for item in items %}
+    <article>
+    <h1>{{ item.title }}</h1>
+    <div>{{ item.description | raw }}</div>
+        {% for product in item.products %}
+        <article>
+            <h3>{{ product.rusName }}</h3>
+
+            <div class="panel panel-default">
+                <div class="panel-heading">Информация на упаковке</div>
+
+                <ul class="list-group">
+                    <li class="list-group-item">Продукт: <strong>{{ product.rusName }}</strong></li>
+                    <li class="list-group-item">Объем: <strong>{{ product.volume }}</strong></li>
+                    {% if product.for %}
+                        <li class="list-group-item"><strong>{{ product.for }}</strong></li>
+                    {% endif %}
+                    {% if product.bantiki %}
+                        <li class="list-group-item">Ключевые ингредиенты: <strong>{{ product.bantiki }}</strong></li>
+                    {% endif %}
+
+                    <li class="list-group-item">
+                        <!--<t4:block path="//Backlists/RusOne" id="{{ product.Pk }}"/> -->
+                        Состав: <strong>{{ product.listRus }}</strong>
+                    </li>
+                    {% if product.how %}
+                    <li class="list-group-item">Directions: <strong>{{ product.how }}</strong></li>
+                    {% endif %}
+
+                    {% if product.shortdesc %}
+                    <li class="list-group-item">Description: <strong>{{ product.shortdesc }}</strong></li>
+                    {% endif %}
+
+                    {% if product.danger %}
+                    <li class="list-group-item"><strong>{{ product.danger }}</strong></li>
+                    {% endif %}
+
+                </ul>
+            </div>
+
+            <div class="panel panel-default">
+
+                <div class="panel-heading">Описание в каталоге</div>
+                <div class="panel-body">
+                    {{ product.description | raw }}
+                </div>
+
+
+            </div>
+
+        </article>
+        {% endfor %}
+    </article>
+    {% endfor %}
+{% endblock %}

@@ -13,6 +13,7 @@
             <th>Бантики</th>
             <th>Дата подписания рецептуры</th>
             <th>Ручная сортировка ингредиентов</th>
+            <th>Серия и позиция в каталоге серии</th>
             <th></th>
             <th></th>
         </tr>
@@ -24,7 +25,9 @@
             <td>{{ item.bantiki }}</td>
             <td>{{ item.dateSigned }}</td>
             <td>{{ item.manualOrderingOn }}</td>
-            <td><a href="/Products/Update/?id={{ item.Pk }}" class="btn btn-warning">Редактировать</a></td>
+            <td>{{ item.seria.title }} [ {{ item.ordering }} ]</td>
+            <td><a href="/Products/Update/?id={{ item.Pk }}" class="btn btn-warning">Редактировать</a>
+                <a href="/Serias/AddProductDescription/?id={{ item.Pk }}" class="btn btn-warning">Редактировать описание в каталоге</a></td>
             <td><a href="/Products/Delete/?id={{ item.Pk }}" class="btn btn-danger">Удалить</a></td>
 
         </tr>

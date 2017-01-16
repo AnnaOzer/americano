@@ -1,0 +1,21 @@
+{% extends 'Index.html' %}
+
+{% block content %}
+<div class="container">
+    <h1 style="margin-bottom: 20px">Добавление продукта в серию {{ seria.title }}</h1>
+    <form class="container" method="post" action="/Serias/AddProductSave">
+        <input type="hidden" name="product[__seria_id]" value="{{ seria.Pk }}">
+
+
+            {% for product in products %}
+               <input type="radio" value="{{ product.Pk }}" name="product[id]"> {{ product.rusName }} |*****| {{ product.engName }}
+                <br>
+
+            {% endfor %}
+
+
+
+        <input type="submit" class="btn btn-info">
+    </form>
+</div>
+{% endblock %}

@@ -38,6 +38,26 @@ class Backlists
         $this->data->items = $items;
     }
 
+    public function actionUsOne($id)
+    {
+        $product = Product::findByPK($id);
+               
+        $product->inhalts = $product->UsInhalts($id);
+        
+
+        $this->data->product = $product;
+    }
+
+    public function actionRusOne($id)
+    {
+        $product = Product::findByPK($id);
+
+        $product->inhalts = $product->listRus;
+
+        $this->data->product = $product;
+
+    }
+
     public function actionRu()
     {
         $items = Product::findAll();

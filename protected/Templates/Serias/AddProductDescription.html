@@ -1,0 +1,107 @@
+{% extends 'Index.html' %}
+
+{% block content %}
+<div class="container">
+    <h1 style="margin-bottom: 20px">Добавление описания продукта</h1>
+    <form class="container" method="post" action="/Serias/AddProductDescriptionSave">
+        <input type="hidden" value="{{ item.Pk }}" name="item[id]">
+        <!--название-->
+        <div class="row">
+
+            <div class="col-xs-6">Продукт</div>
+            <div class="col-xs-6">Product</div>
+        </div>
+        <div class="row">
+
+            <div class="col-xs-6"><input type="text" name="item[rusName]" value="{{ item.rusName }}" size="68"></div>
+            <div class="col-xs-6"><input type="text" name="item[engName]" value="{{ item.engName }}" size="68"></div>
+        </div>
+        <!--объем-->
+        <div class="row">
+
+            <div class="col-xs-6">Объем</div>
+            <div class="col-xs-6">Volume</div>
+        </div>
+        <div class="row">
+
+            <div class="col-xs-6"><input type="text" name="item[volume]" value="{{ item.volume }}"></div>
+            <div class="col-xs-6"><input type="text" name="item[volumeEng]" value="{{ item.volumeEng }}"></div>
+        </div>
+        <!--для чего-->
+        <div class="row">
+
+            <div class="col-xs-6">Для чего</div>
+            <div class="col-xs-6">For</div>
+        </div>
+        <div class="row">
+
+            <div class="col-xs-6"><input type="text" name="item[for]" value="{{ item.for }}" size="68"></div>
+            <div class="col-xs-6"><input type="text" name="item[forEng]" value="{{ item.forEng }}" size="68"></div>
+        </div>
+        <!--ключевые бантики-->
+        <div class="row">
+
+            <div class="col-xs-6">Бантики</div>
+            <div class="col-xs-6">Key ingredients</div>
+        </div>
+        <div class="row">
+
+            <div class="col-xs-6"><input type="text" name="item[bantiki]" value="{{ item.bantiki }}" size="68"></div>
+            <div class="col-xs-6"><input type="text" name="item[bantikiEng]" value="{{ item.bantikiEng }}" size="68"></div>
+        </div>
+
+        <!--как применять-->
+        <div class="row">
+
+            <div class="col-xs-6">Применение</div>
+            <div class="col-xs-6">Directions</div>
+        </div>
+        <div class="row">
+
+            <div class="col-xs-6"><input type="text" name="item[how]" value="{{ item.how }}" size="68"></div>
+            <div class="col-xs-6"><input type="text" name="item[howEng]" value="{{ item.howEng }}" size="68"></div>
+        </div>
+        <!--короткое описание-->
+        <div class="row">
+
+            <div class="col-xs-6">Описание</div>
+            <div class="col-xs-6">Description</div>
+        </div>
+        <div class="row">
+
+            <div class="col-xs-6"><input type="text" name="item[shortdesc]" value="{{ item.shortdesc }}" size="68"></div>
+            <div class="col-xs-6"><input type="text" name="item[shortdescEng]" value="{{ item.shortdescEng }}" size="68"></div>
+        </div>
+        <!--длинное описание из каталога-->
+        <div class="row">
+            <div class="col-xs-6">Текст в каталоге</div>
+            <div class="col-xs-6">Text in catalogue</div>
+        </div>
+        <div class="row">
+            <div class="col-xs-6">
+                <textarea name="item[description]" cols="70" rows="30">{{ item.description }}</textarea>
+            </div>
+            <div class="col-xs-6">
+                <textarea name="item[descriptionEng]" cols="70" rows="30">{{ item.descriptionEng }}</textarea>
+            </div>
+        </div>
+        <!--русские ингредиенты скопированные текстом-->
+        <div class="row">
+            <div class="col-xs-6">Русские составы тупо скопированные с таблицы</div>
+            <div class="col-xs-6"></div>
+        </div>
+        <div class="row">
+            <div class="col-xs-6">
+                <textarea name="item[listRus]" cols="70" rows="30">{{ item.listRus }}</textarea>
+            </div>
+            <div class="col-xs-6">
+
+            </div>
+        </div>
+
+
+
+        <input type="submit" class="btn btn-info">
+    </form>
+</div>
+{% endblock %}
