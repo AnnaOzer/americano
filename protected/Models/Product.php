@@ -29,7 +29,7 @@ class Product
             'how'=>['type'=>'string'],
             'howEng'=>['type'=>'string'],
             
-            'shortdesc'=>['type'=>'text'],
+            'shortdesc'=>['type'=>'text'], 
             'shortdescEng'=>['type'=>'text'],
             
             
@@ -40,8 +40,12 @@ class Product
             'descriptionEng'=>['type'=>'text'],
             
             'ordering'=>['type'=>'int'],
+            'orderingTable'=>['type'=>'int'],
             
             'listRus'=>['type'=>'text'],
+
+            'bestbefore'=>['type'=>'text'],
+            'bestbeforeEng'=>['type'=>'text'],
         ],
         'relations'=> [
             'rawpercents'=>[

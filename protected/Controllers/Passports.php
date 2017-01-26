@@ -61,6 +61,40 @@ class Passports
 
     }
 
+    public function actionRusTable()
+    {
+        $this->app->assets->publishCssFile('/Layouts/assets/table.css');
+
+        $products = Product::findAll();
+        
+        
+            $products=$products->sort(
+                function (Product $x1, Product $x2) {
+                    return $x1->orderingTable <=> $x2->orderingTable;
+                }
+            );
+  
+        $this->data->products = $products;
+
+    }
+
+    public function actionEngTable()
+    {
+        $this->app->assets->publishCssFile('/Layouts/assets/table.css');
+
+        $products = Product::findAll();
+
+
+        $products=$products->sort(
+            function (Product $x1, Product $x2) {
+                return $x1->orderingTable <=> $x2->orderingTable;
+            }
+        );
+
+        $this->data->products = $products;
+
+    }
+
     public function actionRusSelected()
     {
         $this->app->assets->publishCssFile('/Layouts/assets/bantik.css');

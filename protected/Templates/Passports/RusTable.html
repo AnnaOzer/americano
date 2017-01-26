@@ -1,0 +1,38 @@
+{% extends 'Table.html' %}
+
+{% block content %}
+<table class="table table-bordered table-condensed">
+    <tr>
+        <!--
+        <th>№</th>
+        -->
+        <th>Название</th>
+        <th>Объем</th>
+        <th>Для чего</th>
+        <th>Бантики</th>
+        <th>Состав</th>
+        <th>Применение</th>
+        <th>Описание</th>
+        <th>Срок годности</th>
+
+    </tr>
+
+    {% for product in products %}
+    <tr>
+        <!--
+        <td>{{ product.orderingTable }}</td>
+        -->
+        <td>{{ product.rusName }}</td>
+        <td>{{ product.volume }}</td>
+        <td>{{ product.for }}</td>
+        <td>{{ product.bantiki }}</td>
+        <td>{{ product.listRus }}</td>
+        <td>{{ product.how }}</td>
+        <td>{{ product.shortdesc }}</td>
+        <td>{{ product.bestbefore | raw }}</td>
+
+    </tr>
+    {% endfor %}
+
+</table>
+{% endblock %}

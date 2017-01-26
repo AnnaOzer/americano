@@ -1,0 +1,40 @@
+{% extends 'Table.html' %}
+
+{% block content %}
+<table class="table table-bordered table-condensed">
+    <tr>
+        <!--
+        <th>№</th>
+        -->
+        <th>Name</th>
+        <th>Volume</th>
+        <th>What for</th>
+        <th>Featured ingredients</th>
+        <th>Ingredients</th>
+        <th>Directions for use</th>
+        <th>Description</th>
+        <th>Shelf life</th>
+        <th>Warning</th>
+
+    </tr>
+
+    {% for product in products %}
+    <tr>
+        <!--
+        <td>{{ product.orderingTable }}</td>
+        -->
+        <td>{{ product.engName }}</td>
+        <td>{{ product.volumeEng }}</td>
+        <td>{{ product.forEng }}</td>
+        <td>{{ product.bantikiEng }}</td>
+        <td><t4:block path="//Backlists/UsOne" id="{{ product.Pk }}"/></td>
+        <td>{{ product.howEng }}</td>
+        <td>{{ product.shortdescEng }}</td>
+        <td>{{ product.bestbeforeEng | raw }}</td>
+        <td>{{ product.dangerEng }}</td>
+
+    </tr>
+    {% endfor %}
+
+</table>
+{% endblock %}
