@@ -2,6 +2,9 @@
 
 namespace App\Models;
 
+use T4\Core\Collection;
+use T4\Core\Config;
+use T4\Core\Std;
 use T4\Orm\Model;
 
 class Product
@@ -63,9 +66,11 @@ class Product
             
         ]
     ];
+    
+    
+    
 
-
-    public function EuInhalts($id)
+    public function EuInhaltsOld($id)
     {
         $item=Product::findByPK($id);
 
@@ -122,6 +127,79 @@ class Product
         $listString =implode($listArray, ', ');
 
         return $listString;
+
+    }
+
+
+    public function MultiInhalts($id)
+    {
+        $item=Product::findByPK($id);
+
+        foreach ($item->rawpercents as $rawpercent) {
+
+            foreach ($rawpercent->raw->ingroup->inpercents as $inpercent) {
+
+
+                $multpercent = $inpercent->percent * $rawpercent->percent / 100000;
+
+                $line[]=['inNameEu'=>$inpercent->inname->inNameEu,
+                    'inNameUs'=>$inpercent->inname->inNameUs,
+                    'multpercent'=>$multpercent, ];
+            }
+        }
+
+
+        return new Collection($line);
+    }
+
+
+
+
+    public function PreEuInhalts($id){
+
+        $multiInhalts=$this->MultiInhalts($id);
+        
+        $distinctInhalts = $multiInhalts->group('inNameEu');
+
+        foreach ($distinctInhalts as $key => $distinctInhalt) {
+            $v = 0;
+            foreach ($distinctInhalt as $oneInhalt) {
+                $v+= $oneInhalt['multpercent'];
+            }
+            $distinctInhalts[$key]['sum'] = $v;
+        }
+
+
+        $distinctInhalts=new Collection($distinctInhalts);
+
+        foreach ($distinctInhalts as $distinctInhalt)
+        {
+            var_dump($distinctInhalt['sum']);
+            echo '<br>';
+        }
+
+
+        $distinctInhalts->sort(
+
+            function ($x1, $x2) {
+
+                return $x2['sum'] <=> $x1['sum'];
+
+            });
+
+        var_dump($distinctInhalts);
+
+        return $distinctInhalts;
+
+
+    }
+
+    public function EuInhalts($id) {
+
+        $pres = $this->PreEuInhalts($id);
+
+
+
 
     }
 

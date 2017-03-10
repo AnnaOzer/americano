@@ -1,0 +1,32 @@
+{% extends 'Index.html' %}
+
+{% block content %}
+<h1>Линия tedmire</h1>
+
+
+
+<table class="table table-striped" style="margin-top:20px">
+    <tr>
+        <th>Продукт</th>
+        <th></th>
+        <th>US</th>
+        <th>EU</th>
+
+    </tr>
+    {% for product in item.products %}
+    <tr>
+        <td>{{ product.labName }}</td>
+        <td>
+            <a href="/Products/One/?id={{ product.Pk }}" class="btn btn-success">Редактировать рецептуру</a>
+            <a href="/Tedlists/EuOneBack/?id={{ product.Pk }}" class="btn btn-info">Смотреть основу для европейского задника</a>
+        </td>
+        <td><t4:block path="//Backlists/UsOne" id="{{ product.Pk }}"/></td>
+        <td><t4:block path="//Tedlists/EuOneBack" id="{{ product.Pk }}"/></td>
+    </tr>
+
+    {% endfor %}
+</table>
+
+
+
+{% endblock %}

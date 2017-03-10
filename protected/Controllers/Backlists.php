@@ -48,6 +48,16 @@ class Backlists
         $this->data->product = $product;
     }
 
+    public function actionEuOne($id)
+    {
+        $product = Product::findByPK($id);
+
+        $product->inhalts = $product->EuInhalts($id);
+
+
+        $this->data->product = $product;
+    }
+
     public function actionRusOne($id)
     {
         $product = Product::findByPK($id);

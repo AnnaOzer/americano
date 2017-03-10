@@ -7,7 +7,7 @@ return [
             'host'=>'127.0.0.1',
             'user'=>'root',
             'password'=>'',
-            'dbname'=>'americano',
+            'dbname'=>'capuccino',
             ]
     ],
 
@@ -18,6 +18,6 @@ return [
     ],
 
     'description'=> [
-        'Anna\'s Mega Ingregients Generator v.1.00'
+        'Anna\'s Mega Ingregients Generator v.1.02'
     ]
 ];

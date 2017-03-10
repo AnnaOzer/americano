@@ -84,12 +84,19 @@ class Passports
 
         $products = Product::findAll();
 
-
         $products=$products->sort(
             function (Product $x1, Product $x2) {
                 return $x1->orderingTable <=> $x2->orderingTable;
             }
         );
+
+        $products=$products->filter(
+            function (Product $x) {
+                return $x->seria->title <=> 'tedmire';
+            }
+        );
+
+ 
 
         $this->data->products = $products;
 

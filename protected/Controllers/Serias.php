@@ -41,8 +41,11 @@ class Serias
 
     public function actionUpdate($id)
     {
+
         $item = Seria::findByPK($id);
+
         $this->data->item = $item;
+
     }
 
     public function actionDelete($id)
