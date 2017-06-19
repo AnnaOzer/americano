@@ -49,11 +49,11 @@ class Intervaler
 
         return $range;
     }
-
+/*
         public function __construct($percentage)
         {
             $this->percentage = $percentage;
         }
     
-    
+    */
 }

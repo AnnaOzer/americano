@@ -4,17 +4,44 @@ namespace App\Controllers;
 
 use App\Components\Intervaler;
 use App\Models\Product;
+use App\Models\Test;
+use T4\Http\Uploader;
+use T4\Fs\Helpers;
 use T4\Mvc\Controller;
 
-class Test
+class Tests
     extends Controller
 {
 
     public function actionDefault()
     {
+        $this->data->items = Test::findAll();
+        /*
         $t = 35;
         var_dump((new Intervaler($t))->StandartIntervaler($this->percentage));
         die;
+        */
+    }
+    
+    public function actionAddFile(Test $test) {
+
+        $request = $this->app->request;
+
+
+        
+        if ($test) {
+
+            $uploader = (new Uploader('test[image]'))->setPath(ROOT_PATH_PUBLIC . '/syrie');
+
+
+
+            var_dump($uploader->isUploaded()); die;
+
+            $test->save();
+        }
+
+        
+        $this->redirect('/Tests');
     }
 
     public function actionBar()

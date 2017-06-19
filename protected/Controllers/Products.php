@@ -112,6 +112,39 @@ class Products
         $this->redirect('/Products/One/?id='.$id);
     }
     
+    public function actionClone($id)
+    {
+        $product = Product::findByPK($id);
+        $product->rawpercents;
+        $product1 = $product;
+        $product1->labName = 'CLONE of ' . $product->labName;
+        $product1->rusName = 'CLONE of ' . $product->rusName;
+        $product1->engName = 'CLONE of ' . $product->engName;
+
+        $item=
+            (new Product())
+                ->fill($product1)
+                ->save();
+        
+        foreach ($product->rawpercents as $rawpercent) {
+
+            unset ($rawpercent1);
+            $rawpercent1 = $rawpercent;
+            $rawpercent1->__product_id = $item->getPk();
+            unset ($rawpercent1->__id);
+
+
+            $itemer =
+                (new Rawpercent())
+                ->fill($rawpercent)
+                ->save();
+            
+        }
+
+        $this->redirect('/Products/One/?id=' . $item->getPk());
+    }
+    
+    
     /*
     public function actionDeclaratorEu($id=1)
     {

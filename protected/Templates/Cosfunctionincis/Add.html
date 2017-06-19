@@ -1,0 +1,29 @@
+{% extends 'Index.html' %}
+
+{% block content %}
+<div class="container">
+    <h1 style="margin-bottom: 20px">Добавить функцию для INCI (EU): {{ inname.inNameEu }}</h1>
+
+    <form class="container" method="post" action="/Cosfunctionincis/Addsave">
+
+        <input type="hidden" name="cosfunctioninci[__inname_id]" value="{{ inname.Pk }}">
+        <div class="row">
+            <div class="col-xs-8">Function</div>
+            <div class="col-xs-4">
+                %
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-8">
+                {% for cosfunction in cosfunctions %}
+                    <input type="radio" name="cosfunctioninci[__cosfunction_id]" value="{{ cosfunction.Pk }}"> {{ cosfunction.titleEng }} <br>
+                {% endfor %}
+            </div>
+
+        </div>
+
+        <input type="submit" class="btn btn-info">
+    </form>
+
+</div>
+{% endblock %}

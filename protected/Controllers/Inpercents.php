@@ -32,7 +32,7 @@ class Inpercents
         $item = (Inpercent::findByPK($inpercent['id']))
             ->fill($inpercent)
         ->save();
-        $this->redirect('/Ingroups/One/?id=' . $item->__ingroup_id);
+        $this->redirect('/Raws/One/?id=' . $item->__ingroup_id);
     }
 
     public function actionAdd($id)
@@ -48,14 +48,14 @@ class Inpercents
         $inp = (new Inpercent())
             ->fill($inpercent)
             ->save();
-        $this->redirect('/Ingroups/One/?id=' . $inpercent['__ingroup_id']);
+        $this->redirect('/Raws/One/?id=' . $inpercent['__ingroup_id']);
     }
 
     public function actionOne($id)
     {
         $item = Ingroup::findByPK($id);
         if (empty($item)) {
-            $this->redirect('/Ingroups/');
+            $this->redirect('/Raws/');
         }
         $item->inpercents;
 
@@ -70,6 +70,6 @@ class Inpercents
         if (!empty($item)) {
             $item->delete();
         }
-        $this->redirect('/Ingroups/');
+        $this->redirect('/Raws/');
     }
 }

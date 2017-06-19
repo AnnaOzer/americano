@@ -1,0 +1,20 @@
+
+
+    <ul>
+
+    {% for raw in item.raws %}
+        {% for rawpercent in raw.rawpercents %}
+
+
+        <li>
+            {{ rawpercent.product.labName }}
+        </li>
+
+
+        {% endfor %}
+    {% endfor %}
+
+    </ul>
+
+
+

@@ -14,7 +14,11 @@ class Raw
         'relations'=>[
             'ingroup'=>[
                 'type'=>self::BELONGS_TO, 'model'=>Ingroup::class,
-            ]
+            ],
+            'rawpercents'=>[
+                'type'=>self::HAS_MANY, 'model'=>Rawpercent::class,
+            ],
+            
         ]
     ];
 }

@@ -17,8 +17,9 @@
     <tr>
         <td>{{ product.labName }}</td>
         <td>
-            <a href="/Products/One/?id={{ product.Pk }}" class="btn btn-success">Редактировать рецептуру</a>
-            <a href="/Tedlists/EuOneBack/?id={{ product.Pk }}" class="btn btn-info">Смотреть основу для европейского задника</a>
+            <a href="/Products/One/?id={{ product.Pk }}" class="btn btn-success">Редактировать цеховую рецептуру</a>
+            <a href="/Tedlists/EuOneBack/?id={{ product.Pk }}" class="btn btn-default">Смотреть основу для европейского задника</a>
+            <a href="/Eu/One/?id={{ product.Pk }}" class="btn btn-info">Смотреть рецептуру по типу как Алла Селина делала 49+</a>
         </td>
         <td><t4:block path="//Backlists/UsOne" id="{{ product.Pk }}"/></td>
         <td><t4:block path="//Tedlists/EuOneBack" id="{{ product.Pk }}"/></td>

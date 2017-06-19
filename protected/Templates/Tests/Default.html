@@ -1,0 +1,15 @@
+{% extends 'Index.html' %}
+
+{% block content %}
+
+{% for item in items %}
+    <p>{{ item.title }}, {{ item.image }}</p>
+{% endfor %}
+
+    <h1>Загрузка файла</h1>
+    <form action="/Tests/AddFile" method="post">
+        <input type="text" name="test[title]">
+        <input type="file" name="test[image]">
+        <input type="submit">
+    </form>
+{% endblock %}

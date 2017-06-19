@@ -1,0 +1,26 @@
+{% extends 'Index.html' %}
+
+{% block content %}
+<div class="container">
+    <h1 style="margin-bottom: 20px">Редактирование функции чистого INCI</h1>
+    <form class="container" method="post" action="/Cosfunctions/Updatesave">
+        <input type="hidden" name="cosfunction[id]" value="{{ item.Pk }}">
+        <div class="row">
+            <div class="col-xs-4">Function of INCI</div>
+            <div class="col-xs-8"><input type="text" name="cosfunction[titleEng]" value="{{ item.titleEng }}" size="80"></div>
+        </div>
+        <div class="row">
+            <div class="col-xs-4">Функция чистого INCI</div>
+            <div class="col-xs-8"><input type="text" name="cosfunction[titleRu]" value="{{ item.titleRu }}" size="80"></div>
+        </div>
+        <div class="row">
+            <div class="col-xs-4">Откуда функция (из косинга и т.п.)</div>
+            <div class="col-xs-8"><input type="text" name="cosfunction[from]" value="{{ item.from }}" size="80"></div>
+        </div>
+
+
+
+        <input type="submit" class="btn btn-info">
+    </form>
+</div>
+{% endblock %}

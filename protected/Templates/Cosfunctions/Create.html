@@ -1,0 +1,25 @@
+{% extends 'Index.html' %}
+
+{% block content %}
+<div class="container">
+    <h1 style="margin-bottom: 20px">Добавление новой функции чистого INCI</h1>
+    <form class="container" method="post" action="/Cosfunctions/Save">
+        <div class="row">
+            <div class="col-xs-4">Function of INCI</div>
+            <div class="col-xs-8"><input type="text" name="cosfunction[titleEng]" size="80"></div>
+        </div>
+        <div class="row">
+            <div class="col-xs-4">Функция чистого INCI</div>
+            <div class="col-xs-8"><input type="text" name="cosfunction[titleRu]" size="80"></div>
+        </div>
+        <div class="row">
+            <div class="col-xs-4">Откуда функция (из косинга и т.п.)</div>
+            <div class="col-xs-8"><input type="text" name="cosfunction[from]" size="80"></div>
+        </div>
+
+
+
+        <input type="submit" class="btn btn-info">
+    </form>
+</div>
+{% endblock %}

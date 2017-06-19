@@ -13,11 +13,17 @@ class Inname
             'inNameUs'=>['type'=>'string'],
             'ecNumber'=>['type'=>'string'],
             'casNumber'=>['type'=>'string'],
+
+            'cosDesc'=>['type'=>'text'],
         ],
         'relations'=>[
             'inpercents'=>[
                 'type'=>self::HAS_MANY,
                 'model'=>Inpercent::class,
+            ],
+            'cosfunctionincis'=>[
+                'type'=>self::HAS_MANY,
+                'model'=>Cosfunctioninci::class,
             ]
         ]
     ];

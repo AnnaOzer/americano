@@ -1,0 +1,29 @@
+{% extends 'Index.html' %}
+
+{% block content %}
+<div class="container">
+    <h1 style="margin-bottom: 20px">Функции чиcтых INCI</h1>
+    <a href="/Cosfunctions/Create" class="btn btn-info">Добавить функцию</a>
+    <table class="table table-striped" style="margin-top:20px">
+        <tr>
+            <th>Function</th>
+            <th>Функция</th>
+            <th>Откуда функция</th>
+            <th></th>
+            <th></th>
+        </tr>
+        {% for item in items %}
+        <tr>
+            <td>{{ item.titleEng }}</td>
+            <td>{{ item.titleRu }}</td>
+            <td>{{ item.from }}</td>
+
+            <td><a href="/Cosfunctions/Update?id={{ item.Pk }}" class="btn btn-warning">Редактировать</a></td>
+            <td><a href="/Cosfunctions/Delete?id={{ item.Pk }}" class="btn btn-danger">Удалить</a></td>
+
+        </tr>
+        {% endfor %}
+    </table>
+    <a href="/Cosfunctions/Create" class="btn btn-info">Добавить функцию</a>
+</div>
+{% endblock %}

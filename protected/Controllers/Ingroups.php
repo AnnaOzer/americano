@@ -44,7 +44,7 @@ class Ingroups
             ->fill($ingroup)
             ->save();
         
-        $this->redirect('/Ingroups/');
+        $this->redirect('/Raws/');
     }
 
     public function actionDelete($id)
@@ -68,14 +68,14 @@ class Ingroups
         $ing->fill($ingroup)
             ->save();
 
-        $this->redirect('/Ingroups/');
+        $this->redirect('/Ingroups/NamesLister');
     }
     
     public function actionOne($id=1)
     {
         $item=Ingroup::findByPK($id);
         if(empty($item)) {
-            $this->redirect('/Ingroups/');
+            $this->redirect('/Raws/');
         }
         $item->inpercents;
 
@@ -134,6 +134,26 @@ class Ingroups
         $this->data->item = $item;
     }
 
-   
+
+    public function actionProductsLister($id)
+    {
+        $item = Ingroup::findByPK($id);
+        $item->raws;
+
+        foreach( $item->raws as $raw) {
+            $raw->rawpercents;
+            
+            foreach ($raw->rawpercents as $rawpercent) {
+                $rawpercent->product;
+            }
+        }
+
+        $this->data->item = $item;
+    }
     
+    public function actionNamesLister() {
+        
+        $this->data->items = Ingroup::findAll(['order'=>'title']);
+        
+    }
 }

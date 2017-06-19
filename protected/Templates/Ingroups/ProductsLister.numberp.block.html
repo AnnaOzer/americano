@@ -1,0 +1,22 @@
+
+
+
+    {% set numberp = 0 %}
+    {% for raw in item.raws %}
+        {% for rawpercent in raw.rawpercents %}
+
+
+
+        {% set numberp = numberp + 1 %}
+
+        {% endfor %}
+    {% endfor %}
+    <span {% if not numberp %} style="color:red;"  {% endif %}>
+
+    {{ numberp }}
+
+    </span>
+
+
+
+

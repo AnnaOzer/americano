@@ -5,15 +5,42 @@
     <h1 style="margin-bottom: 20px">Чиcтый INCI</h1>
     <a href="/Innames/Create" class="btn btn-info">Добавить чистый INCI</a>
     <table class="table table-striped" style="margin-top:20px">
-        <tr><th>INCI EU</th><th>INCI US</th><th>Cas</th><th>Einecs</th><th></th><th></th></tr>
+        <tr>
+            <th>INCI EU
+                <br>
+                <span style="color:lightseagreen">INCI US</span>
+            </th>
+
+            <th>Cosing Description</th>
+            <th>Cas</th>
+            <th>Einecs</th>
+            <th>Functions</th>
+            <th>В каком сырье присутствует</th>
+
+            <th></th>
+        </tr>
         {% for item in items %}
         <tr>
-            <td>{{ item.inNameEu }}</td>
-            <td>{{ item.inNameUs }}</td>
+            <td>{{ item.inNameEu }}
+                <br>
+                <span style="color:lightseagreen">{{ item.inNameUs }}</span>
+            </td>
+
+            <td>{{ item.cosDesc }}</td>
             <td>{{ item.casNumber }}</td>
             <td>{{ item.ecNumber }}</td>
-            <td><a href="/Innames/Update/?id={{ item.Pk }}" class="btn btn-warning">Редактировать</a></td>
+
+            <td><t4:block path="//Innames/CosfunctionsLister/(id={{ item.Pk }})" /></td>
+
+            <td><t4:block path="//Innames/IngroupsLister/(id={{ item.Pk }})" /></td>
+
+            <td>
+                <a href="/Innames/Update/?id={{ item.Pk }}" class="btn btn-success">Редактировать</a>
+                <a href="/Innames/One/?id={{ item.Pk }}" class="btn btn-info">Редактировать функции</a>
+            </td>
+            <!--
             <td><a href="/Innames/Delete/?id={{ item.Pk }}" class="btn btn-danger">Удалить</a></td>
+            -->
 
         </tr>
         {% endfor %}

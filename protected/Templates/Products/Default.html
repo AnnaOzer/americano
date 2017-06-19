@@ -27,8 +27,14 @@
             <td>{{ item.manualOrderingOn }}</td>
             <td>{{ item.seria.title }} [ {{ item.ordering }} ]</td>
             <td><a href="/Products/Update/?id={{ item.Pk }}" class="btn btn-warning">Редактировать</a>
-                <a href="/Serias/AddProductDescription/?id={{ item.Pk }}" class="btn btn-warning">Редактировать описание в каталоге</a></td>
-            <td><a href="/Products/Delete/?id={{ item.Pk }}" class="btn btn-danger">Удалить</a></td>
+                <a href="/Products/Clone/?id={{ item.Pk }}" class="btn btn-success">Клонировать</a>
+                <a href="/Serias/AddProductDescription/?id={{ item.Pk }}" class="btn btn-warning">Редактировать описание в каталоге</a>
+
+            </td>
+            <td>
+                <a href="/Products/Delete/?id={{ item.Pk }}" class="btn btn-danger">Удалить</a>
+
+            </td>
 
         </tr>
 

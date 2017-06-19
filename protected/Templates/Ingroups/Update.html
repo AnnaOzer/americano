@@ -7,9 +7,16 @@
         <input type="hidden" name="ingroup[id]" value="{{ item.Pk }}">
         <div class="row">
             <div class="col-xs-6">Название как мы обычно называем</div>
-            <div class="col-xs-6"><input type="text" name="ingroup[title]" value="{{ item.title }}"></div>
+            <div class="col-xs-6"><input type="text" name="ingroup[title]" value="{{ item.title }}"  size="80"></div>
 
         </div>
+
+        <div class="row">
+            <div class="col-xs-6">Common name or Trade name</div>
+            <div class="col-xs-6"><input type="text" name="ingroup[officialName]" value="{{ item.officialName }}" size="80"></div>
+
+        </div>
+
         <div class="row">
             <div class="col-xs-6">Название как для русских деклараций</div>
             <div class="col-xs-6"><input type="text" name="ingroup[ruName]" value="{{ item.ruName }}"></div>

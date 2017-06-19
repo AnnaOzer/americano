@@ -70,4 +70,50 @@ class Innames
         }
         $this->redirect('/Innames/');
     }
+
+
+    public function actionCosfunctionsLister($id)
+    {
+        $item = Inname::findByPK($id);
+        $item->cosfunctionincis;
+
+        foreach( $item->cosfunctionincis as $line) {
+            $line->cosfunction;
+        }
+
+        $this->data->item = $item;
+    }
+
+    public function actionUpdateFunctions($id)
+    {
+        $item = Inname::findByPK($id);
+        
+        if(empty($item)) {
+            $this->redirect('/Innames/');
+        }
+
+        $item->cosfunctionincis;
+
+        foreach ($item->cosfunctionincis as $line)
+        {
+            $line->cosfunction;
+        }
+        
+
+        $this->data->item = $item;
+
+    }
+
+    public function actionIngroupsLister($id)
+    {
+        $item = Inname::findByPK($id);
+        $item->inpercents;
+
+        foreach( $item->inpercents as $line) {
+            $line->ingroup;
+        }
+
+        $this->data->item = $item;
+    }
 }
+

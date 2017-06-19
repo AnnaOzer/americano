@@ -7,10 +7,16 @@
     <table class="table table-striped" style="margin-top:20px">
         <tr>
             <th>Основной синоним</th>
+            <th><span style="color: orangered">Common name or Trade name</span></th>
             <th>Прочие цеховые и лабораторные синонимы</th>
             <th>По-русски для декларации</th>
             <th>INCI EU</th>
             <th>INCI US</th>
+
+            <th>В скольких продуктах</th>
+            <!--
+            <th>В каких продуктах</th>
+             -->
             <th>Приоритет</th>
             <th></th>
             <th></th>
@@ -19,12 +25,21 @@
         {% for item in items %}
         <tr>
             <td>{{ item.title }}</td>
+            <td><span style="color: orangered">{{ item.officialName | raw }}</span></td>
             <td>
                 <t4:block path="//Ingroups/RawULister/(id={{ item.Pk }})">
             </td>
             <td>{{ item.ruName }}</td>
             <td>{{ item.eu }}</td>
             <td>{{ item.us }}</td>
+
+            <td><a href="/Ingroups/ProductsLister/?id={{ item.Pk }}">
+                <t4:block path="//Ingroups/ProductsLister/(id={{ item.Pk }})" template="numberp" />
+                </a>
+            </td>
+            <!--
+            <td><t4:block path="//Ingroups/ProductsLister/(id={{ item.Pk }})" /></td>
+            -->
             <td>{{ item.priority }}</td>
 
             <td><a href="/ingroups/One/?id={{ item.Pk }}" class="btn btn-default">Редактировать список INCI</a></td>
