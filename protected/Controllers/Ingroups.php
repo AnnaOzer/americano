@@ -44,7 +44,7 @@ class Ingroups
             ->fill($ingroup)
             ->save();
         
-        $this->redirect('/Raws/');
+        $this->redirect('/Ingroups/');
     }
 
     public function actionDelete($id)
@@ -68,7 +68,7 @@ class Ingroups
         $ing->fill($ingroup)
             ->save();
 
-        $this->redirect('/Ingroups/NamesLister');
+        $this->redirect('/Ingroups/');
     }
     
     public function actionOne($id=1)

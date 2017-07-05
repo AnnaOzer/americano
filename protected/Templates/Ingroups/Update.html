@@ -18,6 +18,12 @@
         </div>
 
         <div class="row">
+            <div class="col-xs-6">Document name</div>
+            <div class="col-xs-6"><input type="text" name="ingroup[documentName]" value="{{ item.documentName }}" size="80"></div>
+
+        </div>
+
+        <div class="row">
             <div class="col-xs-6">Название как для русских деклараций</div>
             <div class="col-xs-6"><input type="text" name="ingroup[ruName]" value="{{ item.ruName }}"></div>
         </div>
@@ -25,6 +31,11 @@
         <div class="row">
             <div class="col-xs-6">Приоритет, число от 1 до 10, 1 - самый интересный компонент, 5 средний, 10 что хотим спрятать ниже </div>
             <div class="col-xs-6"><input type="text" name="ingroup[priority]" value="{{ item.priority }}"></div>
+        </div>
+
+        <div class="row">
+            <div class="col-xs-6">Писать 1 если хотим выдавать точный а не интервальный процент. Если нужен интервал, ставить 0.</div>
+            <div class="col-xs-6"><input type="text" name="ingroup[exactValue]" value="{{ item.exactValue }}"></div>
         </div>
 
         <input type="submit" class="btn btn-info">

@@ -5,11 +5,12 @@
     <h1 style="margin-bottom: 20px">Сырье - названия как пишут в цехе</h1>
     <a href="/Raws/Create" class="btn btn-info">Добавить сырье</a>
     <table class="table table-striped" style="margin-top:20px">
-        <tr><th>Используемое название</th><th>Главный синоним</th><th></th><th></th><th></th></tr>
+        <tr><th>Используемое название</th><th>Главный синоним</th><th></th><th></th><th></th><th></th></tr>
 
         <tr>
             <td>{{ item.title }}</td>
             <td>{{ item.ingroup1 }}</td>
+            <td><a href="/Raws/Where/?id={{ item.Pk }}" class="btn btn-info">Куда входит</td>
             <td><a href="/Raws/Changesyn/?id={{ item.Pk }}" class="btn btn-warning">Изменить главный синоним</a></td>
             <td><a href="/Raws/Update/?id={{ item.Pk }}" class="btn btn-warning">Редактировать название</a></td>
             <td><a href="/Raws/Delete/?id={{ item.Pk }}" class="btn btn-danger">Удалить</a></td>

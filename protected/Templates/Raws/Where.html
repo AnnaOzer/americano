@@ -1,0 +1,56 @@
+{% extends 'Index.html' %}
+
+{% block content %}
+<div class="container">
+    <h1 style="margin-bottom: 20px">Куда входит сырье <span style="color: #ec4844">{{ item.title }}</span></h1>
+
+    <table class="table table-striped" style="margin-top:20px">
+        <tr>
+            <th>В продукции</th>
+            <th>под внутренним синонимом сырья</th>
+            <th>под названием в Formulation</th>
+            <th>реально в концентрации</th>
+
+        </tr>
+        {% for rawpercent in item.rawpercents %}
+        <tr>
+            <td>{{ rawpercent.product.engName }}<br>
+                <a href="/Products/One/?id={{ rawpercent.product.Pk }}">{{ rawpercent.product.labName }}</a>
+            </td>
+            <td><span style="color: #1d9ce5">{{ item.ingroup.title }}</span></td>
+            <td>{{ item.ingroup.officialName | raw }}</td>
+
+            <td>{{ rawpercent.percent/1000 }} %</td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    <h2>Всего под тем же внутренним синонимом <span style="color: #1d9ce5">{{ item.ingroup.title }}</span></h2>
+
+    <table class="table table-striped" style="margin-top:20px">
+        <tr>
+            <th>В продукции</th>
+            <th>под внутренним синонимом сырья</th>
+            <th>под названием в Formulation</th>
+            <th>реально в концентрации</th>
+
+        </tr>
+
+        {% for raw in item.ingroup.raws %}
+            {% for rawpercent in raw.rawpercents %}
+            <tr>
+                <td>{{ rawpercent.product.engName }}<br>
+                    <a href="/Products/One/?id={{ rawpercent.product.Pk }}">{{ rawpercent.product.labName }}</a>
+                </td>
+                <td><span style="color: #1d9ce5">{{ item.ingroup.title }}</span></td>
+                <td>{{ item.ingroup.officialName | raw }}</td>
+
+                <td>{{ rawpercent.percent/1000 }} %</td>
+            </tr>
+
+            {% endfor %}
+        {% endfor %}
+    </table>
+
+</div>
+{% endblock %}

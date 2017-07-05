@@ -13,6 +13,7 @@ class Rawpercent
             'nopercent'=>['type'=>'string'],
             'manualOrder'=>['type'=>'int'],
             'decomposition'=>['type'=>'int'],
+            'whyAdded'=>['type'=>'string'],
 
         ],
         'relations'=>[

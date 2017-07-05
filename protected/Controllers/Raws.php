@@ -90,5 +90,18 @@ class Raws
         }
         $this->redirect('/Raws/');
     }
+
+    public function actionWhere($id)
+    {
+        $item = Raw::findByPk($id);
+        $item->rawpercents;
+        $item->ingroup->raws;
+
+        foreach ($item->rawpercents as $rawpercent) {
+            $rawpercent->product;
+        }
+
+        $this->data->item = $item;
+    }
     
 }

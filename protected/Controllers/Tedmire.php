@@ -12,12 +12,17 @@ class Tedmire
     public function actionDefault()
     {
 
-        $item = Seria::findByTitle('tedmire');
+        $items = Seria::findAll();
+        $this->data->items = $items;
+    }
+
+    public function actionBySeria($id)
+    {
+        
+        $item = Seria::findByPk($id);
         $item->products;
         $this->data->item = $item;
     }
-
-
     
 }
 

@@ -11,6 +11,7 @@ class Inpercent
         'columns'=>[
             'percent'=>['type'=>'int'],
             'ordering'=>['type'=>'int'],
+            'percentageComment'=>['type'=>'string']
         ],
         'relations'=>[
             'inname'=>[

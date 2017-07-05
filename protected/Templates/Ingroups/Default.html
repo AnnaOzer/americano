@@ -8,6 +8,7 @@
         <tr>
             <th>Основной синоним</th>
             <th><span style="color: orangered">Common name or Trade name</span></th>
+            <th><span style="color: blue">Document name</span></th>
             <th>Прочие цеховые и лабораторные синонимы</th>
             <th>По-русски для декларации</th>
             <th>INCI EU</th>
@@ -18,6 +19,7 @@
             <th>В каких продуктах</th>
              -->
             <th>Приоритет</th>
+            <th>Указывать точную процентовку</th>
             <th></th>
             <th></th>
             <th></th>
@@ -26,6 +28,7 @@
         <tr>
             <td>{{ item.title }}</td>
             <td><span style="color: orangered">{{ item.officialName | raw }}</span></td>
+            <td><span style="color: blue">{{ item.documentName | raw }}</span></td>
             <td>
                 <t4:block path="//Ingroups/RawULister/(id={{ item.Pk }})">
             </td>
@@ -42,12 +45,20 @@
             -->
             <td>{{ item.priority }}</td>
 
+            <td>
+                {% if item.exactValue %}
+                    <span class="btn btn-warning">
+                        {{ item.exactValue }}
+                    </span>
+                {% endif %}
+            </td>
+
             <td><a href="/ingroups/One/?id={{ item.Pk }}" class="btn btn-default">Редактировать список INCI</a></td>
             <td><a href="/Ingroups/Update/?id={{ item.Pk }}" class="btn btn-default">Редактировать</a></td>
             <td><a href="/Ingroups/Delete/?id={{ item.Pk }}" class="btn btn-danger">Удалить</a></td>
         </tr>
         {% endfor %}
     </table>
-    <a href="//Ingroups/Create" class="btn btn-info">Добавить основной синоним сырья</a>
+    <a href="/Ingroups/Create" class="btn btn-info">Добавить основной синоним сырья</a>
 </div>
 {% endblock %}

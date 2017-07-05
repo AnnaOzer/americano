@@ -18,14 +18,24 @@
                 <input type="text" name="rawpercent[percent]" value="{{ item.percent }}">
 
             </div>
+
             <div class="col-xs-4">ManualOrder</div>
             <div class="col-xs-8">
                 <input type="number" name="rawpercent[manualOrder]" value="{{ item.manualOrder }}">
             </div>
             <div class="col-xs-4">Decomposition 1 если добавили к цеховой рецептуре, -1 если убрали из цеховой рецептуры</div>
             <div class="col-xs-8">
-                <input type="number" name="rawpercent[decomposition]" value="{{ item.decomposition }}" value="0">
+                <input type="number" name="rawpercent[decomposition]" value="{{ item.decomposition }}">
             </div>
+</div>
+        <div class="row">
+        <div class="col-xs-4">Для какой цели компонент в рецептуре</div>
+            <div class="col-xs-8">
+                <input type="text" name="rawpercent[whyAdded]" value="{{ item.whyAdded }}" size="50">
+            </div>
+</div>
+
+
 
         </div>
 

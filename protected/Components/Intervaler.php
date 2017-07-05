@@ -49,6 +49,44 @@ class Intervaler
 
         return $range;
     }
+
+
+    public function ExactIntervaler($percent000)
+    {
+        $range = [];
+
+        $exactInterval = $percent000 / 1000 . '%';
+
+        switch (true) {
+            case $percent000 <= 100:
+                $range = ['order' => 1, 'interval' => $exactInterval];
+                break;
+            case $percent000 <= 1000:
+                $range = ['order' => 2, 'interval' => $exactInterval];
+                break;
+            case $percent000 <= 5000:
+                $range = ['order' => 3, 'interval' => $exactInterval];
+                break;
+            case $percent000 <= 10000:
+                $range = ['order' => 4, 'interval' => $exactInterval];
+                break;
+            case $percent000 <= 25000:
+                $range = ['order' => 5, 'interval' => $exactInterval];
+                break;
+            case $percent000 <= 50000:
+                $range = ['order' => 6, 'interval' => $exactInterval];
+                break;
+            case $percent000 <= 75000:
+                $range = ['order' => 7, 'interval' => $exactInterval];
+                break;
+            case $percent000 <= 100000:
+                $range = ['order' => 8, 'interval' => $exactInterval];
+                break;
+        }
+
+        return $range;
+    }
+
 /*
         public function __construct($percentage)
         {

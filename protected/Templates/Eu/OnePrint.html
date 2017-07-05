@@ -13,7 +13,7 @@
        <th>EC</th>
        <th>%</th>
        <th>Function</th>
-       <th>Function ВАРИАНТЫ</th>
+
    </tr>
 
     {% for rawpercent in item.rawpercents %}
@@ -22,8 +22,6 @@
                <td rowspan="{{ rawpercent.raw.ingroup.inpercents.count }}">{{ loop.index }}</td>
                <td rowspan="{{ rawpercent.raw.ingroup.inpercents.count }}">
                    {{ rawpercent.raw.ingroup.officialName | raw }}
-                   <br>
-                   <span style="color: lightseagreen">{{ rawpercent.raw.ingroup.title }}</span>
                </td>
 
                {% set line = 0 %}
@@ -39,11 +37,9 @@
                     {% endif %}
 
                        <td>{{ inpercent.inname.inNameEu | upper}}
-
-                       {% if inpercent.percentageComment %}
-                           ({{ inpercent.percentageComment }})
-                       {% endif %}
-
+                           {% if inpercent.percentageComment %}
+                                ({{ inpercent.percentageComment }})
+                           {% endif %}
                        </td>
                        <td>{{ inpercent.inname.ecNumber }}</td>
                        <td>{{ inpercent.inname.casNumber }}</td>
@@ -52,7 +48,7 @@
 
                         <td style="min-width: 100px" rowspan="{{ rawpercent.raw.ingroup.inpercents.count }}">{{ rawpercent.intervalpercent.interval }}</td>
                         <td rowspan="{{ rawpercent.raw.ingroup.inpercents.count }}">{{ rawpercent.whyAdded }}</td>
-                        <td rowspan="{{ rawpercent.raw.ingroup.inpercents.count }}">{{ rawpercent.listFunctions }}</td>
+
 
                     {% endif %}
 
