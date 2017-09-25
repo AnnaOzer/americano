@@ -28,6 +28,13 @@
             <div class="col-xs-4">Включить ручное упорядочивание, 0-автоматическое 1-ручное</div>
             <div class="col-xs-8"><input type="number" name="product[manualOrderingOn]" value="{{ item.manualOrderingOn }}"></div>
         </div>
+
+        <div class="row">
+            <div class="col-xs-4">Включить ручное упорядочивание inci в заднике, 0-автоматическое 1-ручное</div>
+            <div class="col-xs-8"><input type="number" name="product[manualProductinciorder]" value="{{ item.manualProductinciorder }}"></div>
+        </div>
+
+
         <div class="row">
             <div class="col-xs-4">Позиция в каталоге в серии {{ item.seria.title }}</div>
             <div class="col-xs-8"><input type="number" name="product[ordering]" value="{{ item.ordering }}"></div>

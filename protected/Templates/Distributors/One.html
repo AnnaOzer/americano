@@ -1,0 +1,43 @@
+{% extends 'Index.html' %}
+
+{% block content %}
+<div class="container">
+    <h1 style="margin-bottom: 20px">Для INCI</h1>
+
+    <div class="row">
+        <div class="col-xs-4"><h3>INCI EU</h3></div>
+        <div class="col-xs-8"><h3>{{ item.inNameEu }}</h3></div>
+    </div>
+
+    <div class="row">
+        <div class="col-xs-4"><p>INCI US</p></div>
+        <div class="col-xs-8"><p>{{ item.inNameUs }}</p></div>
+    </div>
+
+    <a href="/Cosfunctionincis/Add/?id={{ item.Pk }}" class="btn btn-info">добавить функцию INCI</a>
+
+
+    <table class="table table-striped" style="margin-top:20px">
+        <tr>
+            <th>Function</th>
+            <th>Функция</th>
+            <th></th>
+            <th></th>
+        </tr>
+
+        {% for cosfunctioninci in item.cosfunctionincis %}
+
+        <tr>
+            <td>{{ cosfunctioninci.cosfunction.titleEng }}</td>
+            <td>{{ cosfunctioninci.cosfunction.titleRu }}</td>
+
+
+            <td><a href="/Cosfunctionincis/Delete/?id={{ cosfunctioninci.Pk }}" class="btn btn-danger">Удалить</a></td>
+        </tr>
+
+        {% endfor %}
+
+    </table>
+
+</div>
+{% endblock %}

@@ -1,7 +1,7 @@
 <ul>
     {% for raw in item.raws %}
     <li>
-        <a href="/Raws/One/?id={{ raw.Pk }}">{{ raw.title }}</a>
+        <a href="/Raws/One/?id={{ raw.Pk }}">{{ raw.title | raw }}</a>
     </li>
     {% endfor %}
 </ul>

@@ -1,0 +1,27 @@
+{% extends 'Clear.html' %}
+
+{% block content %}
+<div>
+    <h1 style="margin-bottom: 20px">Основные синонимы названий сырья</h1>
+
+    <table class="table table-striped" style="margin-top:20px">
+        <tr>
+
+            <th>По-русски для декларации</th>
+            <th>INCI EU</th>
+
+
+
+
+        </tr>
+        {% for item in items %}
+        <tr>
+
+            <td>{{ item.ruName | raw }}</td>
+            <td>{{ item.eu | upper }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+
+</div>
+{% endblock %}

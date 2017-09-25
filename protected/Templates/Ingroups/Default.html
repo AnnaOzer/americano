@@ -23,16 +23,17 @@
             <th></th>
             <th></th>
             <th></th>
+            <th></th>
         </tr>
         {% for item in items %}
-        <tr>
+
             <td>{{ item.title }}</td>
             <td><span style="color: orangered">{{ item.officialName | raw }}</span></td>
             <td><span style="color: blue">{{ item.documentName | raw }}</span></td>
             <td>
                 <t4:block path="//Ingroups/RawULister/(id={{ item.Pk }})">
             </td>
-            <td>{{ item.ruName }}</td>
+            <td>{{ item.ruName | raw }}</td>
             <td>{{ item.eu }}</td>
             <td>{{ item.us }}</td>
 
@@ -52,7 +53,7 @@
                     </span>
                 {% endif %}
             </td>
-
+            <td><a href="/Ingroups/Fromwhere/?id={{ item.Pk }}" class="btn btn-default">Производители и дистрибьюторы</a></td>
             <td><a href="/ingroups/One/?id={{ item.Pk }}" class="btn btn-default">Редактировать список INCI</a></td>
             <td><a href="/Ingroups/Update/?id={{ item.Pk }}" class="btn btn-default">Редактировать</a></td>
             <td><a href="/Ingroups/Delete/?id={{ item.Pk }}" class="btn btn-danger">Удалить</a></td>

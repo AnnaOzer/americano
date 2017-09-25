@@ -49,7 +49,10 @@ class Product
 
             'bestbefore'=>['type'=>'text'],
             'bestbeforeEng'=>['type'=>'text'],
+            
+            'manualProductinciorder'=>['type'=>'int']
         ],
+        
         'relations'=> [
             'rawpercents'=>[
                 'type'=>self::HAS_MANY,
@@ -63,7 +66,11 @@ class Product
                 'type'=>self::BELONGS_TO,
                 'model'=>Upak::class,
             ],
-            
+            'productinciorders'=>[
+                'type'=>self::HAS_MANY,
+                'model'=>Productinciorder::class,
+            ],
+           
         ]
     ];
     

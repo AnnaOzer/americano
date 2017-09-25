@@ -144,7 +144,8 @@ class Products
         $this->redirect('/Products/One/?id=' . $item->getPk());
     }
     
-    
+   
+
     /*
     public function actionDeclaratorEu($id=1)
     {

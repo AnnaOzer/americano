@@ -1,0 +1,20 @@
+{% extends 'Index.html' %}
+
+{% block content %}
+<div class="container">
+
+    <h1 style="margin-bottom: 20px">Редактирование производителя</h1>
+    <form class="container" method="post" action="/Manufacturers/Updatesave">
+        <input type="hidden" name="manufacturer[id]" value="{{ item.Pk }}">
+        <div class="row">
+            <div class="col-xs-4">Наименование производителя</div>
+            <div class="col-xs-8"><input type="text" name="manufacturer[title]" value="{{ item.title }}">
+
+            </div>
+        </div>
+
+        <input type="submit" class="btn btn-info">
+    </form>
+
+</div>
+{% endblock %}

@@ -45,12 +45,12 @@
                        {% endif %}
 
                        </td>
-                       <td>{{ inpercent.inname.ecNumber }}</td>
                        <td>{{ inpercent.inname.casNumber }}</td>
+                       <td>{{ inpercent.inname.ecNumber }}</td>
 
                     {% if line == 1 %}
 
-                        <td style="min-width: 100px" rowspan="{{ rawpercent.raw.ingroup.inpercents.count }}">{{ rawpercent.intervalpercent.interval }}</td>
+                        <td style="min-width: 100px" rowspan="{{ rawpercent.raw.ingroup.inpercents.count }}">{{ rawpercent.intervalpercent.interval | raw }}</td>
                         <td rowspan="{{ rawpercent.raw.ingroup.inpercents.count }}">{{ rawpercent.whyAdded }}</td>
                         <td rowspan="{{ rawpercent.raw.ingroup.inpercents.count }}">{{ rawpercent.listFunctions }}</td>
 
@@ -70,5 +70,6 @@
 
 </table>
 
+<t4:block path="//Eu/OneInci">
 
 {% endblock %}

@@ -1,0 +1,38 @@
+{% extends 'Clear.html' %}
+
+{% block content %}
+<div>
+    <h1 style="margin-bottom: 20px">Основные синонимы названий сырья</h1>
+
+    <table class="table table-striped" style="margin-top:20px">
+        <tr>
+            <th>Основной синоним</th>
+            <th><span style="color: orangered">Common name or Trade name</span></th>
+            <th><span style="color: blue">Document name</span></th>
+            <th>Прочие цеховые и лабораторные синонимы</th>
+            <th>По-русски для декларации</th>
+            <th>INCI EU</th>
+            <th>INCI US</th>
+
+
+
+        </tr>
+        {% for item in items %}
+        <tr>
+            <td>{{ item.title }}</td>
+            <td><span style="color: orangered">{{ item.officialName | raw }}</span></td>
+            <td><span style="color: blue">{{ item.documentName | raw }}</span></td>
+            <td>
+                <t4:block path="//Ingroups/RawULister/(id={{ item.Pk }})"/>
+            </td>
+            <td>{{ item.ruName }}</td>
+            <td>{{ item.eu }}</td>
+            <td>{{ item.us }}</td>
+
+
+        </tr>
+        {% endfor %}
+    </table>
+
+</div>
+{% endblock %}

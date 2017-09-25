@@ -1,0 +1,43 @@
+{% extends 'Index.html' %}
+
+{% block content %}
+<div class="container">
+
+    <h2 style="margin-bottom: 20px">Редактирование места INCI в списке ингредиентов</h2>
+    <form class="container" method="post" action="/Productinciorders/Save">
+
+        <input type="hidden" name="productinciorder[__product_id]" value="{{ product.Pk }}">
+        <input type="hidden" name="productinciorder[__inname_id]" value="{{ inname.Pk }}">
+
+
+
+
+        <div class="row">
+            <div class="col-xs-4"><h4>Продукт:</h4></div>
+            <div class="col-xs-8"><h2>{{ product.labName }} <br>
+                = {{ product.rusName }} <br>
+                = {{ product.engName }}</h2>
+            </div>
+
+        </div>
+
+        <div class="row">
+            <div class="col-xs-4"><h4>INCI:</h4></div>
+            <div class="col-xs-8"><h2>{{ inname.inNameEu }}</h2></div>
+
+
+        </div>
+
+        <div class="row">
+            <div class="col-xs-4"><h4>Номер в списке:</h4></div>
+            <div class="col-xs-8"><h2>
+                <input type="" name="productinciorder[order]" value="{{ productinciorder.order }}">
+            </h2>
+            </div>
+
+        </div>
+        <input type="submit" class="btn btn-info">
+    </form>
+
+</div>
+{% endblock %}

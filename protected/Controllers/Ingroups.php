@@ -26,7 +26,31 @@ class Ingroups
         $this->data->items = $items;
     }
 
-    
+    public function actionSpisok()
+    {
+        $items = Ingroup::findAll(['order'=>'title']);
+
+        foreach ($items as $item) {
+            $item->eu = $item->EuLister($item->getPk());
+            $item->us = $item->UsLister($item->getPk());
+        }
+
+
+        $this->data->items = $items;
+    }
+    public function actionSpisokActive()
+    {
+        $items = Ingroup::findAll(['order'=>'ruName', 'where'=>'isActive=1']);
+
+        foreach ($items as $item) {
+            $item->eu = $item->EuLister($item->getPk());
+           
+        }
+
+
+        $this->data->items = $items;
+    }
+
     public function actionCreate($id=null)
     {
         if(!empty($id)){
@@ -87,6 +111,11 @@ class Ingroups
         $this->data->item = $item;
     }
 
+    public function actionFromwhere($id)
+    {
+        $item=Ingroup::findByPK($id);
+    }
+    
    /*
     public function actionEuLister($id)
     {

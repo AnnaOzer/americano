@@ -24,7 +24,11 @@ class Inname
             'cosfunctionincis'=>[
                 'type'=>self::HAS_MANY,
                 'model'=>Cosfunctioninci::class,
-            ]
+            ],
+            'productinciorders'=>[
+                'type'=>self::HAS_MANY,
+                'model'=>Productinciorder::class,
+            ],
         ]
     ];
 }

@@ -1,0 +1,22 @@
+{% extends 'Index.html' %}
+
+{% block content %}
+<div class="container">
+    <h1>Дистрибьюторы сырья</h1>
+    <table class="table table-striped">
+        <tr>
+            <th>Наименование</th>
+            <th></th>
+            <th></th>
+        </tr>
+        {% for item in items %}
+        <tr>
+            <td>{{ item.title }}</td>
+            <td><a href="/Distributors/Update/?id={{ item.Pk }}" class="btn btn-warning">Редактировать</a></td>
+            <td><a href="/Distributors/Delete/?id={{ item.Pk }}" class="btn btn-danger">Удалить</a></td>
+        </tr>
+        {% endfor %}
+    </table>
+    <a href="/Distributors/Create" class="btn btn-info">Добавить дистрибьютора сырья</a>
+</div>
+{% endblock %}

@@ -12,7 +12,8 @@
             <th>Официальное английское название</th>
             <th>Бантики</th>
             <th>Дата подписания рецептуры</th>
-            <th>Ручная сортировка ингредиентов</th>
+            <th>Ручная сортировка Formulation</th>
+            <th>Ручная сортировка списка Inci</th>
             <th>Серия и позиция в каталоге серии</th>
             <th></th>
             <th></th>
@@ -25,6 +26,7 @@
             <td>{{ item.bantiki }}</td>
             <td>{{ item.dateSigned }}</td>
             <td>{{ item.manualOrderingOn }}</td>
+            <td>{{ item.manualProductinciorder }}</td>
             <td>{{ item.seria.title }} [ {{ item.ordering }} ]</td>
             <td><a href="/Products/Update/?id={{ item.Pk }}" class="btn btn-warning">Редактировать</a>
                 <a href="/Products/Clone/?id={{ item.Pk }}" class="btn btn-success">Клонировать</a>

@@ -1,0 +1,26 @@
+{% extends 'Index.html' %}
+
+{% block content %}
+
+<h1 style="margin-bottom: 20px">Содержание по INCI в продукции<br>
+{{ item.labName }} = {{ item.rusName }} = {{ item.engName }}
+</h1>
+<table class="table table-striped">
+    <tr>
+        <th>#</th>
+        <th>INCI</th>
+        <th>real percentage</th>
+    </tr>
+    {% set nom = 1 %}
+    {% for prelister in item.prelisters %}
+    <tr>
+        <td>{{ nom }}{% set nom = nom + 1 %}</td>
+        <td>{{ prelister.inname }}</td>
+        <td>{{ prelister.inperc }}</td>
+
+    </tr>
+    {% endfor %}
+
+</table>
+
+{% endblock %}

@@ -15,6 +15,7 @@ class Ingroup
             'ruName'=>['type'=>'string'],
             'priority'=>['type'=>'int'],
             'exactValue'=>['type'=>'int'],
+            'isActive'=>['type'=>'int'],
         ],
         'relations'=>[
             'inpercents'=>[
@@ -24,6 +25,14 @@ class Ingroup
             'raws'=>[
                 'type'=>self::HAS_MANY,
                 'model'=>Raw::class,
+            ],
+            'isdistributors'=>[
+                'type'=>self::HAS_MANY,
+                'model'=>Isdistributor::class,
+            ],
+            'ismanufacturers'=>[
+                'type'=>self::HAS_MANY,
+                'model'=>Ismanufacturer::class,
             ]
         ]
     ];

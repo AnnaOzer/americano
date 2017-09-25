@@ -3,10 +3,15 @@
 namespace App\Controllers;
 
 use App\Components\Intervaler;
+use App\Components\Megainci;
 use App\Models\Product;
+use App\Models\Productinciorder;
 use App\Models\Rawpercent;
 use App\Models\Inpercent;
+use T4\Core\Collection;
+use T4\Core\Std;
 use T4\Mvc\Controller;
+use App\Components\Megaproduct;
 
 class Eu
     extends Controller
@@ -18,6 +23,115 @@ class Eu
     }
 
     public function actionOne($id)
+    {
+        $this->data->item = Megaproduct::Builder($id);
+       
+    }
+
+    public function actionOneInci($id)
+    {
+        $this->data->lister = Megainci::Builder($id);
+    }
+    
+    public function actionOnePrint($id)
+    {
+        $this->data->item = Megaproduct::Builder($id);
+    }
+    
+    public function actionOnePreingredients($id)
+    {
+        $item = Megaproduct::Builder($id);
+        $p_productId = $item->getPk();
+        $prelisters = [];
+
+        foreach ($item->rawpercents as $rawpercent){
+
+            foreach ($rawpercent->raw->ingroup->inpercents as $inpercent) {
+                $x=[];
+
+                $x['inci_id'] = $inpercent->inname->getPk();
+                $x['inci_name'] = $inpercent->inname->inNameEu;
+
+                $x['inci_perc'] = $rawpercent->percent * $inpercent->percent /100000000;
+
+                //$productinciorders = $inpercent->inname->productinciorders;
+
+
+                /*
+                               $productinciorders ->filter(
+                                   function (Productinciorder $x) {
+                                       return $x->product->getPk() == $item->getPk();
+                                   }
+                               );
+
+                               var_dump($productinciorders);
+                               */
+                foreach ($inpercent->inname->productinciorders as $productinciorder) {
+
+                    $i_productId = $productinciorder->product->getPk();
+                    $inci_order = NULL;
+                    if ($p_productId == $i_productId) {
+                        $x['inci_order'] = $productinciorder->order;
+                    }
+                }
+
+                
+                $prelisters[$x['inci_id']]['inperc'] += $x['inci_perc'];
+                $prelisters[$x['inci_id']]['inname'] = $x['inci_name'];
+                $prelisters[$x['inci_id']]['inorder'] = $x['inci_order'];
+                $prelisters[$x['inci_id']]['inciid'] = $x['inci_id'];
+
+                $sprelisters[$x['inci_id']]['inorder'] = $x['inci_order'];
+                $sprelisters[$x['inci_id']]['inperc'] += $x['inci_perc'];
+                $sprelisters[$x['inci_id']]['inname'] = $x['inci_name'];
+                $sprelisters[$x['inci_id']]['inciid'] = $x['inci_id'];
+                
+            }
+        }
+
+        arsort($prelisters);
+        asort($sprelisters);
+        $sprelisters = new Collection($sprelisters);
+
+
+
+
+        $item->prelisters = $prelisters;
+        $this->data->item = $item;
+        $this->data->preingredients = $item->preingredients;
+        $this->data->sprelisters = $sprelisters;
+
+        $this->data->slist = implode($sprelisters->collect('inname'), ', ');
+    }
+/*
+    public function actionOneInci($id)
+    { 
+        $item = Megaproduct::Builder($id);
+        foreach ($item->rawpercents as $rawpercent){
+
+            foreach ($rawpercent->raw->ingroup->inpercents as $inpercent) {
+
+                $inci_id = $inpercent->inname->getPk();
+                $inci_name = $inpercent->inname->inNameEu;
+
+                $inci_perc = $rawpercent->percent * $inpercent->percent /100000000;
+
+                $prelisters[$inci_id]['inperc'] += $inci_perc;
+                $prelisters[$inci_id]['inname'] = $inci_name;
+
+
+            }
+        }
+
+        arsort($prelisters);
+
+
+
+        $item->prelisters = $prelisters;
+        $this->data->item = $item;
+    }
+   */
+    public function actionOneOldTemp($id)
     {
         // get product by Pk
         $item = Product::findByPK($id);
@@ -91,13 +205,25 @@ class Eu
                 }
             );
         }
-        
+
+        // start temp
+        $listIng = [];
+        $orderIng = 0;
+
+        foreach ($item->rawpercents as $rawpercent) {
+
+            foreach ($rawpercent->raw->ingroup->inpercents as $inpercent) {
+
+                $listIng[] = [++$orderIng, $inpercent->inname->inNameEu];
+            }
+        }
+        // end temp
 
         $this->data->item = $item;
         
     }
 
-    public function actionOnePrint($id)
+    public function actionOnePrintOldTemp($id)
     {
     // get product by Pk
         $item = Product::findByPK($id);
@@ -177,5 +303,9 @@ class Eu
 
         }
 
-
+    public function actionOneIngredients($id)
+    {
+        
+      
+    } 
 }
