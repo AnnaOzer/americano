@@ -33,9 +33,28 @@ class Eu
         $this->data->lister = Megainci::Builder($id);
     }
     
-    public function actionOnePrint($id)
+    public function actionOnePrint($id, $mode='')
     {
+        /*
+        if ('pdf' == $mode) {
+            $data = Megaproduct::Builder($id);
+            $path = __DIR__ . DS . 'test' . DS . testhtml;
+            $template = 'OnePrint.html';
+            $page = $this->view->render($template, $data);
+            file_put_contents($path.'.html', $page);
+            exec('"C:\Server\OpenServer\bin\wkhtmltopdf\bin\wkhtmltopdf.exe" '.$path.'.html '.$path.'.pdf');
+            @unlink($path.'.html');
+            $file = $path.'.pdf';
+            header("Content-type: application/pdf");
+            header("Content-Disposition: filename=Putevoi_");
+            readfile($file);
+            @unlink($file);
+            exit;
+        } else {
+        */
         $this->data->item = Megaproduct::Builder($id);
+        //}
+
     }
     
     public function actionOnePreingredients($id)
