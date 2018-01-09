@@ -14,6 +14,7 @@ class Rawpercent
             'manualOrder'=>['type'=>'int'],
             'decomposition'=>['type'=>'int'],
             'whyAdded'=>['type'=>'string'],
+            'intervalpercent'=> ['type'=>'string'],
 
         ],
         'relations'=>[

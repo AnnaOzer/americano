@@ -55,14 +55,16 @@ class Megaproduct
 
 
 
-
+            
             // get some string info about an ingroup concentration in Formulation
             if ( $rawpercent->raw->ingroup->exactValue ) {
                 // get exact string values for specific ingroups instead of string intervals
                 $rawpercent->intervalpercent = (new Intervaler())->ExactIntervaler($rawpercent->percent);
+
             } else {
                 // get string interval for percentage
                 $rawpercent->intervalpercent = (new Intervaler())->StandartIntervaler($rawpercent->percent);
+
             }
 
 
@@ -76,8 +78,9 @@ class Megaproduct
 
             // sort by real percentage    
             $item->rawpercents = $item->rawpercents->sort(
-                function (Rawpercent $x1, Rawpercent $x2) {
-                    return $x2->percent <=> $x1->percent;
+                function (Rawpercent $x2, Rawpercent $x1) {
+
+                    return $x1->percent <=> $x2->percent;
                 }
             );
         }
@@ -87,6 +90,7 @@ class Megaproduct
             // sort by manual ordering    
             $item->rawpercents = $item->rawpercents->sort(
                 function (Rawpercent $x1, Rawpercent $x2) {
+                    
                     return $x1->manualOrder <=> $x2->manualOrder;
                 }
             );
@@ -94,7 +98,7 @@ class Megaproduct
 
         
         
-        
+
                 return $item;
     }
 }

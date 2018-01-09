@@ -15,8 +15,8 @@
         <th>Позиция в списке</th>
         <th></th>
     </tr>
-    {% set nom = 1 %}
-    {% for prelister in item.prelisters %}
+        {% set nom = 1 %}
+        {% for prelister in item.prelisters %}
     <tr>
         <td>{{ nom }}{% set nom = nom + 1 %}</td>
         <td>{{ prelister.inname }}</td>

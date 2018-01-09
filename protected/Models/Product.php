@@ -70,6 +70,10 @@ class Product
                 'type'=>self::HAS_MANY,
                 'model'=>Productinciorder::class,
             ],
+            'typeofreceptures'=>[
+                'type'=>self::BELONGS_TO,
+                'model'=>Typeofrecepture::class,
+            ]
            
         ]
     ];

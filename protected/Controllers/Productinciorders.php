@@ -21,10 +21,11 @@ class Productinciorders
     {
         $this->data->product = Product::findByPK($product_id);
         $this->data->inname = Inname::findByPK($inci_id);
-        $this->data->productinciorder = Productinciorder::find(['where'=>'__product_id=50 and __inname_id=11']);
+        $this->data->productinciorder = Productinciorder::find(['where'=>'__product_id=' . $product_id .' and __inname_id='. $inci_id]);
+        //$this->data->productinciorder = Productinciorder::find(['where'=>'__product_id=50 and __inname_id=11']);
         //$this->data->productinciorder = Productinciorder::findByAttributes(['__product_id'=> 50, '__inname_id' => 11]);
 
-
+        //var_dump($this->data->productinciorder); die;
     }
     
     public function actionSave($productinciorder)
