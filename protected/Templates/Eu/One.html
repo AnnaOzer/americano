@@ -11,7 +11,7 @@
        <th>INCI Name</th>
        <th>CAS</th>
        <th>EC</th>
-       <th>%</th>
+       <th width="140px">%</th>
        <th>Function</th>
        <th>Function ВАРИАНТЫ</th>
    </tr>
@@ -21,9 +21,16 @@
            <tr>
                <td rowspan="{{ rawpercent.raw.ingroup.inpercents.count }}">{{ loop.index }}</td>
                <td rowspan="{{ rawpercent.raw.ingroup.inpercents.count }}">
-                   {{ rawpercent.raw.ingroup.officialName | raw }}
+                   <span class="h3">
+                       {{ rawpercent.raw.ingroup.officialName | raw }}
+                   </span>
                    <br>
-                   <span style="color: lightseagreen">{{ rawpercent.raw.ingroup.title }}</span>
+                   [[
+                   <span style="color: lightseagreen">
+                       {{ rawpercent.raw.ingroup.title }}
+                   </span>
+                   ]]
+
                </td>
 
                {% set line = 0 %}
@@ -38,11 +45,14 @@
                         <tr>
                     {% endif %}
 
-                       <td>{{ inpercent.inname.inNameEu | upper}}
+                       <td>
+                           <span class="h4">
+                           {{ inpercent.inname.inNameEu | upper}}
 
-                       {% if inpercent.percentageComment %}
-                           ({{ inpercent.percentageComment }})
-                       {% endif %}
+                                {% if inpercent.percentageComment %}
+                                    ({{ inpercent.percentageComment }})
+                                {% endif %}
+                           </span>
 
                        </td>
                        <td>{{ inpercent.inname.casNumber }}</td>
@@ -50,7 +60,11 @@
 
                     {% if line == 1 %}
 
-                        <td style="min-width: 100px" rowspan="{{ rawpercent.raw.ingroup.inpercents.count }}">{{ rawpercent.intervalpercent.interval | raw }}</td>
+                        <td style="min-width: 100px" rowspan="{{ rawpercent.raw.ingroup.inpercents.count }}">
+                            <span class="h4">
+                                {{ rawpercent.intervalpercent.interval | raw }}
+                            </span>
+                        </td>
                         <td rowspan="{{ rawpercent.raw.ingroup.inpercents.count }}">{{ rawpercent.whyAdded }}</td>
                         <td rowspan="{{ rawpercent.raw.ingroup.inpercents.count }}">{{ rawpercent.listFunctions }}</td>
 

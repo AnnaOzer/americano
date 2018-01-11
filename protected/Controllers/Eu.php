@@ -4,6 +4,7 @@ namespace App\Controllers;
 
 use App\Components\Intervaler;
 use App\Components\Megainci;
+use App\Components\Preformulator;
 use App\Models\Product;
 use App\Models\Productinciorder;
 use App\Models\Rawpercent;
@@ -12,6 +13,7 @@ use T4\Core\Collection;
 use T4\Core\Std;
 use T4\Mvc\Controller;
 use App\Components\Megaproduct;
+use \App\Components\Prelister;
 
 class Eu
     extends Controller
@@ -24,7 +26,7 @@ class Eu
 
     public function actionOne($id)
     {
-        $this->data->item = Megaproduct::Builder($id);
+        $this->data->item = Preformulator::EuPreformulator($id);
        
     }
 
@@ -55,6 +57,10 @@ class Eu
         $this->data->item = Megaproduct::Builder($id);
         //}
 
+    }
+    
+    public function actionOnePreingredients2($id) {
+        $this->data = Prelister::EuPrelister($id);
     }
     
     public function actionOnePreingredients($id)

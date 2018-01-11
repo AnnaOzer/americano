@@ -8,15 +8,19 @@
     <p>Бантики: {{ item.bantiki }}</p>
     <a href="/Rawpercents/Add/?id={{ item.Pk }}" class="btn btn-info">Добавить ингредиент</a>
     <table class="table table-striped" style="margin-top:20px">
+        {% set line = 1 %}
         {% for rawpercent in item.rawpercents %}
-        <tr>
-            <td>{{ rawpercent.raw.title }}</td>
-            <td>{{ rawpercent.percent }}</td>
-            <td>{{ rawpercent.manualOrder }}</td>
-            <td>{{ rawpercent.decomposition }}</td>
-            <td><a href="/Rawpercents/Update/?id={{ rawpercent.Pk }}" class="btn btn-warning">Редактировать</a></td>
-            <td><a href="/Rawpercents/Delete/?id={{ rawpercent.Pk }}" class="btn btn-danger">Удалить</a></td>
-        </tr>
+
+                <tr>
+                    <td>{{ line }}</td>
+                    <td>{{ rawpercent.raw.title }}</td>
+                    <td>{{ rawpercent.percent }}</td>
+                    <td>{{ rawpercent.manualOrder }}</td>
+                    <td>{{ rawpercent.decomposition }}</td>
+                    <td><a href="/Rawpercents/Update/?id={{ rawpercent.Pk }}" class="btn btn-warning">Редактировать</a></td>
+                    <td><a href="/Rawpercents/Delete/?id={{ rawpercent.Pk }}" class="btn btn-danger">Удалить</a></td>
+                </tr>
+            {% set line = line + 1 %}
         {% endfor %}
     </table>
     <a href="/Rawpercents/Add/?id={{ item.Pk }}" class="btn btn-info">Добавить ингредиент</a>

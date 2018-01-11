@@ -16,6 +16,7 @@ class Ingroup
             'priority'=>['type'=>'int'],
             'exactValue'=>['type'=>'int'],
             'isActive'=>['type'=>'int'],
+            
         ],
         'relations'=>[
             'inpercents'=>[

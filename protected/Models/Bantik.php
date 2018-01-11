@@ -16,6 +16,10 @@ class Bantik
             'rawpercents'=>[
                 'type'=>self::MANY_TO_MANY,
                 'model'=>Rawpercent::class,
+            ], 
+            'premixrawpercents'=>[
+                'type'=>self::MANY_TO_MANY,
+                'model'=>Premixrawpercent::class,
             ]
         ]
     ];

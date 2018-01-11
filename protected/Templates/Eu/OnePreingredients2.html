@@ -1,0 +1,38 @@
+{% extends 'Clear.html' %}
+
+{% block content %}
+
+<h3 style="margin-bottom: 20px"><small>Содержание по INCI в продукции</small> <br> {{ item.labName }} </h3>
+<h6> = {{ item.rusName }} = {{ item.engName }}</h6>
+
+<table class="table table-striped">
+    <tr>
+        <th>#</th>
+        <th>INCI</th>
+        <th>real percentage</th>
+
+        <th>Позиция в списке</th>
+        <!--<th></th>-->
+    </tr>
+        {% set nom = 1 %}
+        {% for prelister in item.prelisters %}
+    <tr>
+        <td>{{ nom }}{% set nom = nom + 1 %}</td>
+        <td>{{ prelister.inname }}</td>
+        <td>{{ prelister.inperc }}</td>
+        <td>{{ prelister.inorder }}</td>
+
+        <!--
+        <td><a href="/Productinciorders/Update?inci_id={{ prelister.inciid }}&product_id={{ item.Pk }}" class="btn btn-info">Исправить позицию в списке</a></td>
+        -->
+    </tr>
+    {% endfor %}
+
+</table>
+
+<hr>
+
+<h3>{{ item.rusName }}</h3>
+<h4>Ingredients: {{ slist | upper }}.</h4>
+
+{% endblock %}

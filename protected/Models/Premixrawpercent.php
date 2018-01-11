@@ -4,7 +4,7 @@ namespace App\Models;
 
 use T4\Orm\Model;
 
-class Rawpercent
+class Premixrawpercent
     extends Model
 {
     static protected $schema=[
@@ -23,10 +23,7 @@ class Rawpercent
                 'type'=>self::BELONGS_TO, 
                 'model'=>Raw::class,
             ],
-            'product'=>[
-                'type'=>self::BELONGS_TO,
-                'model'=>Product::class,
-            ],
+
 
             'premix'=>[
                 'type'=>self::BELONGS_TO,
@@ -40,7 +37,7 @@ class Rawpercent
         ]
     ];
 
-
+/*
     public function StandartInterval($percent000)
     {
         $range = [];
@@ -74,5 +71,6 @@ class Rawpercent
 
         return $range;
     }
+  */
     
 }

@@ -4,25 +4,16 @@ namespace App\Models;
 
 use T4\Orm\Model;
 
-class Rawpercent
+class Premixinproduct
     extends Model
 {
     static protected $schema=[
         'columns'=>[
             'percent'=>['type'=>'int'],
-            'nopercent'=>['type'=>'string'],
-            'manualOrder'=>['type'=>'int'],
-            'decomposition'=>['type'=>'int'],
-            'whyAdded'=>['type'=>'string'],
-            'intervalpercent'=> ['type'=>'string'],
-            'listFunctions'=> ['type'=>'string'],
-
+          
         ],
         'relations'=>[
-            'raw'=>[
-                'type'=>self::BELONGS_TO, 
-                'model'=>Raw::class,
-            ],
+           
             'product'=>[
                 'type'=>self::BELONGS_TO,
                 'model'=>Product::class,
@@ -33,10 +24,7 @@ class Rawpercent
                 'model'=>Premix::class,
             ],
             
-            'bantiks'=>[
-                'type'=>self::MANY_TO_MANY,
-                'model'=>Bantik::class,
-            ],
+           
         ]
     ];
 
