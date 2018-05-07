@@ -31,7 +31,8 @@
 </table>
 
 <hr>
-<t4:block path="//Eu/OnePreingredients2" template="onlyingr">
-    <hr>
-    <t4:block path="//Us/OnePreingredients2" template="onlyingr">
+
+<h3>{{ item.rusName }}</h3>
+<h4>Ingredients: {{ slist | upper }}.</h4>
+
 {% endblock %}

@@ -1,0 +1,50 @@
+{% extends 'Index.html' %}
+
+{% block content %}
+<div class="container">
+
+    {% for item in items %}
+        <h1>
+            Сырье<br/><strong>{{ item.documentName | raw }}</strong>
+        </h1>
+        <table class="table table-bordered ">
+
+            <tr>
+                <td>Внутренний синоним</td>
+                <td>{{ item.title }}</td>
+            </tr>
+            <tr>
+                <td>Common name or trade name</td>
+                <td>{{ item.officialName | raw }}</td>
+            </tr>
+            <tr>
+                <td>Document name</td>
+                <td>{{ item.documentName | raw }}</td>
+            </tr>
+            <tr>
+                <td>Прочие цеховые и лабораторные синонимы</td>
+                <td><t4:block path="//Ingroups/RawULister/(id={{ item.Pk }})" template="line" /></td>
+            </tr>
+            <tr>
+                <td>По-русски для декларации</td>
+                <td>{{ item.title }}</td>
+            </tr>
+            <tr>
+                <td>INCI EU</td>
+                <td>{{ item.eu }}</td>
+            </tr>
+            <tr>
+                <td>INCI US</td>
+                <td>{{ item.us }}</td>
+            </tr>
+            <tr>
+                <td>В скольких продуктах</td>
+                <td><t4:block path="//Ingroups/ProductsLister/(id={{ item.Pk }})" template="numberp" /></td>
+            </tr>
+
+        </table>
+    {% endfor %}
+
+</div>
+
+{% endblock %}

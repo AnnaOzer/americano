@@ -15,7 +15,7 @@ use T4\Core\Collection;
 
 class Prelister
 {
-    public static function EuPrelister($id)
+    public static function Prelister($id, $reg='eu')
     {
         $item = Megaproduct::Builder($id);
         $p_productId = $item->getPk();
@@ -27,7 +27,12 @@ class Prelister
                 $x = [];
 
                 $x['inci_id'] = $inpercent->inname->getPk();
-                $x['inci_name'] = $inpercent->inname->inNameEu;
+                
+                if ('us'==$reg) {
+                    $x['inci_name'] = $inpercent->inname->inNameUs;
+                } else {
+                    $x['inci_name'] = $inpercent->inname->inNameEu;
+                }
 
                 $x['inci_perc'] = $rawpercent->percent * $inpercent->percent / 100000000;
 

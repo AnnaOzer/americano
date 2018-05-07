@@ -21,7 +21,7 @@ class Megaproduct
 
         // 
         foreach ($item->rawpercents as $rawpercent) {
-            
+
             // remove certain bad-looking conponents
             if ( -1 == $rawpercent->decomposition ) {
                 unset ($rawpercent);
@@ -100,6 +100,8 @@ class Megaproduct
 
         }
 
+        
+        
 
                 return $item;
     }

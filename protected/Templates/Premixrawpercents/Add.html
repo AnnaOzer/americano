@@ -1,0 +1,31 @@
+{% extends 'Index.html' %}
+
+{% block content %}
+<div class="container">
+    <h1 style="margin-bottom: 20px">Добавить ингредиент в Премикс: {{ premix.labName }}</h1>
+
+    <form class="container" method="post" action="/Premixrawpercents/Addsave">
+
+        <input type="hidden" name="premixrawpercent[__premix_id]" value="{{ premix.Pk }}">
+        <div class="row">
+            <div class="col-xs-8">Сырье</div>
+            <div class="col-xs-4">%</div>
+        </div>
+        <div class="row">
+            <div class="col-xs-8">
+                {% for raw in raws %}
+                <input type="radio" name="premixrawpercent[__raw_id]" value="{{ raw.Pk }}"> {{ raw.title }} <br>
+                {% endfor %}
+            </div>
+            <div class="col-xs-4">
+        </div>
+        <input type="text" name="premixrawpercent[percent]">
+        <input type="hidden" name="premixrawpercent[decomposition]" value="0">
+        </div>
+
+
+<input type="submit" class="btn btn-info">
+    </form>
+
+</div>
+{% endblock %}

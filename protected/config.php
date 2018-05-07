@@ -13,8 +13,12 @@ return [
 
     'extensions' => [
         'bootstrap'=>[
-            'theme'=>'cosmo ',
+            'theme'=>'simplex ',
         ],
+        'jquery'=> [
+            
+        ],
+
     ],
 
     'description'=> [

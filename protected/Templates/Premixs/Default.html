@@ -1,0 +1,24 @@
+{% extends 'Index.html' %}
+
+{% block content %}
+<div class="container">
+    <h1>Премиксы</h1>
+    <table class="table table-striped">
+        <tr>
+            <th>Наименование</th>
+            <th></th>
+            <th></th>
+            <th></th>
+        </tr>
+        {% for item in items %}
+        <tr>
+            <td>{{ item.labName }}</td>
+            <td><a href="/Premixs/One/?id={{ item.Pk }}" class="btn btn-info">Список компонентов премикса</a></td>
+            <td><a href="/Premixs/Update/?id={{ item.Pk }}" class="btn btn-warning">Редактировать</a></td>
+            <td><a href="/Premixs/Delete/?id={{ item.Pk }}" class="btn btn-danger">Удалить</a></td>
+        </tr>
+        {% endfor %}
+    </table>
+    <a href="/Premixs/Create" class="btn btn-info">Добавить премикс</a>
+</div>
+{% endblock %}

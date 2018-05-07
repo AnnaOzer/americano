@@ -1,9 +1,10 @@
-{% extends 'Clear.html' %}
+{% extends 'Index.html' %}
 
 {% block content %}
 
-<h3 style="margin-bottom: 20px"><small>Содержание по INCI в продукции</small> <br> {{ item.labName }} </h3>
-<h6> = {{ item.rusName }} = {{ item.engName }}</h6>
+<h1 style="margin-bottom: 20px">Содержание по INCI в продукции<br>
+{{ item.labName }} = {{ item.rusName }} = {{ item.engName }}
+</h1>
 
 <table class="table table-striped">
     <tr>
@@ -12,7 +13,7 @@
         <th>real percentage</th>
 
         <th>Позиция в списке</th>
-        <!--<th></th>-->
+        <th></th>
     </tr>
         {% set nom = 1 %}
         {% for prelister in item.prelisters %}
@@ -22,16 +23,16 @@
         <td>{{ prelister.inperc }}</td>
         <td>{{ prelister.inorder }}</td>
 
-        <!--
         <td><a href="/Productinciorders/Update?inci_id={{ prelister.inciid }}&product_id={{ item.Pk }}" class="btn btn-info">Исправить позицию в списке</a></td>
-        -->
+
     </tr>
     {% endfor %}
 
 </table>
 
 <hr>
-<t4:block path="//Eu/OnePreingredients2" template="onlyingr">
-    <hr>
-    <t4:block path="//Us/OnePreingredients2" template="onlyingr">
+
+<h3>{{ item.rusName }}</h3>
+<h3>Ingredients: {{ slist | upper }}.</h3>
+
 {% endblock %}

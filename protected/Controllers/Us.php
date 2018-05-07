@@ -15,7 +15,7 @@ use T4\Mvc\Controller;
 use App\Components\Megaproduct;
 use \App\Components\Prelister;
 
-class Eu
+class Us
     extends Controller
 {
 
@@ -60,7 +60,7 @@ class Eu
     }
     
     public function actionOnePreingredients2($id) {
-        $this->data = Prelister::Prelister($id, 'eu');
+        $this->data = Prelister::Prelister($id, 'us');
     }
     
     public function actionOnePreingredients($id)

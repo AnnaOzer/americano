@@ -4,8 +4,11 @@ namespace App\Controllers;
 
 use App\Components\Intervaler;
 use App\Models\Product;
+use App\Models\Products;
 use App\Models\Raw;
 use App\Models\Rawpercent;
+use App\Models\Premix;
+use App\Models\Premixinproduct;
 use T4\Mvc\Controller;
 
 class Products
@@ -65,28 +68,59 @@ class Products
         $this->redirect('/Products/');
     }
 
-    public function actionOne($id){
-        $item=Product::findByPK($id);
-        if(empty($item)) {
+    public function actionOne($id)
+    {
+        $item = Product::findByPK($id);
+        if (empty($item)) {
             $this->redirect('/Products/');
         }
-        $item->rawpercents;
-        $item->rawpercents = $item->rawpercents->sort(
-            function ($x1, $x2) {
-                return $x2->percent <=> $x1->percent;
-            }
-        );
         
+        // сырье
+        if (0 != $item->rawpercents) {
+
+        $item->rawpercents = $item->rawpercents->sort(
+                function ($x1, $x2) {
+                    return $x2->percent <=> $x1->percent;
+                }
+            );
+        }
         foreach ($item->rawpercents as $line)
         {
             $line->raw;
         }
         
+        // повторить для премиксов
+        if (0 != $item->premixinproducts) {
+
+            $item->premixinproducts = $item->premixinproducts->sort(
+                function ($x1, $x2) {
+                    return $x2->percent <=> $x1->percent;
+                }
+            );
+        }
+
+        foreach ($item->premixinproducts as $line)
+        {
+            $line->premix;
+        }
+        
+        
+        
         $sum=0;
+        
+        // сырье
         foreach ($item->rawpercents as $rawpercent)
         {
             $sum+=$rawpercent->percent;
         }
+
+        // повторить для премиксов
+        foreach ($item->rawpercents as $rawpercent)
+        {
+            $sum+=$rawpercent->percent;
+        }
+        
+        
         $item->sumPercent =$sum;
         $item->freePercent = 100000-$sum;
         
@@ -96,6 +130,39 @@ class Products
         
     }
 
+    public function actionOnepremix($id){
+        $item=Product::findByPK($id);
+        if(empty($item)) {
+            $this->redirect('/Products/');
+        }
+        $item->sumPercent = 0;
+        $item->freePercent = 100000;
+
+        if (0 != $item->premixrawpercents) {
+            $item->premixrawpercents = $item->premixrawpercents->sort(
+                function ($x1, $x2) {
+                    return $x2->percent <=> $x1->percent;
+                }
+            );
+
+
+            foreach ($item->premixrawpercents as $line) {
+                $line->raw;
+            }
+
+            $sum = 0;
+            foreach ($item->premixrawpercents as $premixrawpercent) {
+                $sum += $premixrawpercent->percent;
+            }
+            $item->sumPercent = $sum;
+            $item->freePercent = 100000 - $sum;
+        }
+
+        $this->data->item = $item;
+
+
+    }
+    
     public function actionAdd($id)
     {
         $product = Product::findByPK($id);

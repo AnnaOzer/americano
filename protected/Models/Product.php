@@ -73,7 +73,11 @@ class Product
             'typeofreceptures'=>[
                 'type'=>self::BELONGS_TO,
                 'model'=>Typeofrecepture::class,
-            ]
+            ],
+            'premixinproducts'=>[
+                'type'=>self::HAS_MANY,
+                'model'=>Premixinproduct::class,
+            ],
            
         ]
     ];

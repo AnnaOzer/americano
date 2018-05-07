@@ -1,0 +1,35 @@
+{% extends 'Index.html' %}
+
+{% block content %}
+<div class="container">
+
+    <h1 style="margin-bottom: 20px">Премиксы в продукции</h1>
+
+    <table class="table table-striped" style="margin-top:20px">
+        <tr>
+            <th>В продукции</th>
+            <th>содержится премикс</th>
+            <th>в концентрации</th>
+
+        </tr>
+        {% for item in items %}
+        <tr>
+            <td><a href="/Products/One/?id={{ item.product.Pk }}">
+                {{ item.product.engName }}<br>
+                {{ item.product.labName }}
+            </a>
+            </td>
+            <td><a href="/Premixs/One/?id={{ item.premix.Pk }}">
+                {{ item.premix.labName }}
+            </a>
+            </td>
+
+
+            <td>{{ item.percent/1000 }} %</td>
+        </tr>
+        {% endfor %}
+    </table>
+
+
+</div>
+{% endblock %}

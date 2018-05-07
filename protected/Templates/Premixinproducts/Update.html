@@ -1,0 +1,45 @@
+{% extends 'Index.html' %}
+
+{% block content %}
+<div class="container">
+    <h1 style="margin-bottom: 20px">Обновить % сырья в премиксе {{ item.premix.labName }}</h1>
+    <form class="container" method="post" action="/Premixrawpercents/Updatesave">
+        <input type="hidden" name="premixrawpercent[__premix_id]" value="{{ item.premix.Pk }}">
+        <div class="row">
+            <div class="col-xs-4">Сырье</div>
+            <div class="col-xs-8">
+                {{ item.raw.title }}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-4">%</div>
+            <div class="col-xs-8">
+                <input type="hidden" name="premixrawpercent[id]" value="{{ item.Pk }}">
+                <input type="text" name="premixrawpercent[percent]" value="{{ item.percent }}">
+
+            </div>
+
+            <div class="col-xs-4">ManualOrder</div>
+            <div class="col-xs-8">
+                <input type="number" name="premixrawpercent[manualOrder]" value="{{ item.manualOrder }}">
+            </div>
+            <div class="col-xs-4">Decomposition 1 если добавили к цеховой рецептуре, -1 если убрали из цеховой рецептуры</div>
+            <div class="col-xs-8">
+                <input type="number" name="premixrawpercent[decomposition]" value="{{ item.decomposition }}">
+            </div>
+</div>
+        <div class="row">
+        <div class="col-xs-4">Для какой цели компонент в рецептуре</div>
+            <div class="col-xs-8">
+                <input type="text" name="premixrawpercent[whyAdded]" value="{{ item.whyAdded }}" size="50">
+            </div>
+</div>
+
+
+
+
+
+        <input type="submit" class="btn btn-info">
+    </form>
+</div>
+{% endblock %}

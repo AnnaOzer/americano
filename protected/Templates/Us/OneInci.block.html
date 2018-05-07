@@ -1,0 +1,5 @@
+<h3>EU Ingredients List</h3>
+
+Ingredients: {% for punct in lister %}
+{{ punct.inname.inNameEu | upper }},
+{% endfor %}

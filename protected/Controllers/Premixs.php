@@ -3,7 +3,7 @@
 namespace App\Controllers;
 
 use App\Components\Intervaler;
-use App\Models\Product;
+use App\Models\Premix;
 use App\Models\Raw;
 use App\Models\Rawpercent;
 use T4\Mvc\Controller;
@@ -26,6 +26,7 @@ class Premixs
 
     public function actionSave($premix)
     {
+
         $item=
             (new Premix())
             ->fill($premix)
@@ -38,6 +39,11 @@ class Premixs
     public function actionUpdate($id)
     {
         $item = Premix::findByPK($id);
+
+        foreach ($item->premixrawpercents as $premixrawpercent) {
+            $premixrawpercent->raw;
+        }
+
         $this->data->item = $item;
     }
 
@@ -64,22 +70,22 @@ class Premixs
         if(empty($item)) {
             $this->redirect('/Premixs/');
         }
-        $item->rawpercents;
-        $item->rawpercents = $item->rawpercents->sort(
+        $item->premixrawpercents;
+        $item->premixrawpercents = $item->premixrawpercents->sort(
             function ($x1, $x2) {
                 return $x2->percent <=> $x1->percent;
             }
         );
         
-        foreach ($item->rawpercents as $line)
+        foreach ($item->premixrawpercents as $line)
         {
             $line->raw;
         }
         
         $sum=0;
-        foreach ($item->rawpercents as $rawpercent)
+        foreach ($item->premixrawpercents as $premixrawpercent)
         {
-            $sum+=$rawpercent->percent;
+            $sum+=$premixrawpercent->percent;
         }
         $item->sumPercent =$sum;
         $item->freePercent = 100000-$sum;
@@ -93,7 +99,7 @@ class Premixs
     public function actionAdd($id)
     {
         $premix = Premix::findByPK($id);
-        $raws = Raw::findAll(['order'=>'title']);
+        $raws = Raw::findAll(['order'=>'labName']);
         $this->data->premix = $premix;
         $this->data->raws = $raws;
     }

@@ -24,5 +24,28 @@
         {% endfor %}
     </table>
     <a href="/Rawpercents/Add/?id={{ item.Pk }}" class="btn btn-info">Добавить ингредиент</a>
+    <br><br>
+
+    <a href="/Premixinproducts/Add/?id={{ item.Pk }}" class="btn btn-success">Добавить премикс</a>
+
+    <table class="table table-striped" style="margin-top:20px">
+        {% set line = 1 %}
+        {% for premixinproduct in item.premixinproducts %}
+
+        <tr>
+            <td>{{ line }}</td>
+            <td>{{ premixinproduct.premix.labName }}</td>
+            <td>{{ premixinproduct.percent }}</td>
+            <td>{{ rawpercent.manualOrder }}</td>
+            <td>{{ rawpercent.decomposition }}</td>
+            <td><a href="/Premixinproducts/Update/?id={{ premixinproduct.Pk }}" class="btn btn-warning">Редактировать</a></td>
+            <td><a href="/Premixinproducts/Delete/?id={{ premixinproduct.Pk }}" class="btn btn-danger">Удалить</a></td>
+        </tr>
+        {% set line = line + 1 %}
+        {% endfor %}
+    </table>
+
+
+    <a href="/Premixinproducts/Add/?id={{ item.Pk }}" class="btn btn-success">Добавить премикс</a>
 </div>
 {% endblock %}

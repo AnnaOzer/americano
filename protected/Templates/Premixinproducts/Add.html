@@ -1,0 +1,33 @@
+{% extends 'Index.html' %}
+
+{% block content %}
+<div class="container">
+    <h1 style="margin-bottom: 20px">Добавить премикс в продукцию: {{ product.labName }}</h1>
+
+    <form class="container" method="post" action="/Premixinproducts/Addsave">
+
+        <input type="hidden" name="premixinproduct[__product_id]" value="{{ product.Pk }}">
+
+        <div class="row">
+            <div class="col-xs-8"><h2>Премиксы</h2></div>
+            <div class="col-xs-4">%</div>
+        </div>
+        <div class="row">
+            <div class="col-xs-8">
+                {% for premix in premixs %}
+                <input type="radio" name="premixinproduct[__premix_id]" value="{{ premix.Pk }}"> {{ premix.labName }}
+                <br>
+                {% endfor %}
+            </div>
+            <div class="col-xs-4">
+        </div>
+        <input type="text" name="premixinproduct[percent]">
+
+        </div>
+
+<br>
+<input type="submit" class="btn btn-info">
+    </form>
+
+</div>
+{% endblock %}

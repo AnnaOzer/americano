@@ -1,0 +1,28 @@
+{% extends 'Index.html' %}
+
+{% block content %}
+<div class="container">
+    <h1 style="margin-bottom: 20px">Премиксы для рецептуры: {{ item.labName }}</h1>
+    <p>Рецептура заполнена на: {{ item.sumPercent }},<br>
+    свободна на {{ item.freePercent }}</p>
+    <p>Бантики: {{ item.bantiki }}</p>
+    <a href="/Premixinproducts/Add/?id={{ item.Pk }}" class="btn btn-info">Добавить премикс в рецептуру</a>
+    <table class="table table-striped" style="margin-top:20px">
+        {% set line = 1 %}
+        {% for rawpercent in item.rawpercents %}
+
+                <tr>
+                    <td>{{ line }}</td>
+                    <td>{{ premixrawpercent.raw.title }}</td>
+                    <td>{{ premixrawpercent.percent }}</td>
+                    <td>{{ premixrawpercent.manualOrder }}</td>
+                    <td>{{ premixrawpercent.decomposition }}</td>
+                    <td><a href="/Premixrawpercents/Update/?id={{ premixrawpercent.Pk }}" class="btn btn-warning">Редактировать</a></td>
+                    <td><a href="/Premixrawpercents/Delete/?id={{ premixrawpercent.Pk }}" class="btn btn-danger">Удалить</a></td>
+                </tr>
+            {% set line = line + 1 %}
+        {% endfor %}
+    </table>
+    <a href="/Premixrawpercents/Add/?id={{ item.Pk }}" class="btn btn-info">Добавить премикс в рецептуру</a>
+</div>
+{% endblock %}

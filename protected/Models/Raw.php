@@ -18,6 +18,9 @@ class Raw
             'rawpercents'=>[
                 'type'=>self::HAS_MANY, 'model'=>Rawpercent::class,
             ],
+            'premixrawpercents'=>[
+                'type'=>self::HAS_MANY, 'model'=>Premixrawpercent::class,
+            ],
             
         ]
     ];

@@ -13,9 +13,10 @@ class Premix
         ],
         
         'relations'=> [
-            'rawpercents'=>[
+
+            'premixrawpercents'=>[
                 'type'=>self::HAS_MANY,
-                'model'=>Rawpercent::class,
+                'model'=>Premixrawpercent::class,
             ],
         ]
     ];

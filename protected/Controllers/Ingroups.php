@@ -24,6 +24,7 @@ class Ingroups
         
         
         $this->data->items = $items;
+        
     }
 
     public function actionSpisok()
@@ -164,8 +165,9 @@ class Ingroups
     }
 
 
-    public function actionProductsLister($id)
+    public function actionProductsLister($id, $min=1, $max=1000000)
     {
+        /*
         $item = Ingroup::findByPK($id);
         $item->raws;
 
@@ -177,12 +179,42 @@ class Ingroups
             }
         }
 
+        if ($min!=1 or $max!=1000000) {
+            foreach ($item->raws as $raw) {
+
+                foreach ($raw->rawpercents as $rawpercent) {
+
+                    if ($rawpercent->product->id < $min
+                        or
+                        $rawpercent->product->id > $max
+                    ) {
+                        unset ($item->raw->rawpercent);
+                    }
+                }
+
+            }
+        }
+
         $this->data->item = $item;
+        */
+        return true;
     }
     
     public function actionNamesLister() {
         
         $this->data->items = Ingroup::findAll(['order'=>'title']);
         
+    }
+    
+    public function actionSyrie($min=1, $max=1000000)
+    {
+        $items = Ingroup::findAll(['order'=>'title']);
+
+        foreach ($items as $item) {
+            $item->eu = $item->EuLister($item->getPk());
+            $item->us = $item->UsLister($item->getPk());
+        }
+
+        $this->data->items = $items;
     }
 }

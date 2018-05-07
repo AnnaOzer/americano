@@ -1,0 +1,20 @@
+{% extends 'Index.html' %}
+
+{% block content %}
+<div class="container">
+
+    <h1 style="margin-bottom: 20px">Редактирование премикса</h1>
+    <form class="container" method="post" action="/Premixs/Updatesave">
+        <input type="hidden" name="premix[id]" value="{{ item.Pk }}">
+        <div class="row">
+            <div class="col-xs-4">Наименование производителя</div>
+            <div class="col-xs-8"><input type="text" name="premix[labName]" value="{{ item.labName }}">
+
+            </div>
+        </div>
+
+        <input type="submit" class="btn btn-info">
+    </form>
+
+</div>
+{% endblock %}

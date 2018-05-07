@@ -28,11 +28,7 @@ class Rawpercent
                 'model'=>Product::class,
             ],
 
-            'premix'=>[
-                'type'=>self::BELONGS_TO,
-                'model'=>Premix::class,
-            ],
-            
+
             'bantiks'=>[
                 'type'=>self::MANY_TO_MANY,
                 'model'=>Bantik::class,
