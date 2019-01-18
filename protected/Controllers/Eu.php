@@ -58,11 +58,20 @@ class Eu
         //}
 
     }
-    
+    public function actionOneRecInciPrint($id) {
+        $this->data = Prelister::Prelister($id, 'eu');
+
+    }
+    public function actionOneRecInci($id) {
+        $this->data = Prelister::Prelister($id, 'eu');
+
+    }
+
     public function actionOnePreingredients2($id) {
         $this->data = Prelister::Prelister($id, 'eu');
     }
-    
+
+
     public function actionOnePreingredients($id)
     {
         $item = Megaproduct::Builder($id);

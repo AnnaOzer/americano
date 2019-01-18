@@ -2,7 +2,7 @@
 
 {% block content %}
 <div class="container">
-    <h1>Производители сырья</h1>
+    <h1>Порядок сырья в Ингредиентах</h1>
     <table class="table table-striped">
         <tr>
             <th>Наименование</th>
@@ -11,9 +11,14 @@
         </tr>
         {% for item in items %}
         <tr>
-            <td>{{ item.title }}</td>
-            <td><a href="/Manufacturers/Update/?id={{ item.Pk }}" class="btn btn-warning">Редактировать</a></td>
-            <td><a href="/Manufacturers/Delete/?id={{ item.Pk }}" class="btn btn-danger">Удалить</a></td>
+            <td>{{ item.Pk }}</td>
+            <td>{{ item.product.labName }}</td>
+            <td>{{ item.inname.inNameEu }}</td>
+            <td>{{ item.order }}</td>
+            <td>{{ item.whyAdded }}</td>
+            <td>{{ item.listFunctions }}</td>
+            <td><a href="/Productinciorders/Update/?product_id={{ item.product.Pk }}&inname_id={{ item.inname.Pk }}" class="btn btn-warning">Редактировать</a></td>
+            <td><a href="/Productinciorders/Delete/?id={{ item.Pk }}" class="btn btn-danger">Удалить</a></td>
         </tr>
         {% endfor %}
     </table>

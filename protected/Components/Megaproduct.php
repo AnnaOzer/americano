@@ -18,6 +18,7 @@ class Megaproduct
     public static function Builder($id) {
         // get product by Pk
         $item = Product::findByPK($id);
+        $item->productinciorders;
 
         // 
         foreach ($item->rawpercents as $rawpercent) {
@@ -42,7 +43,7 @@ class Megaproduct
 
                 $inpercent->inname;
 
-                // starts temp functions   
+                // starts temp functions
 
                 foreach ($inpercent->inname->cosfunctionincis as $cosfunctioninci) {
 

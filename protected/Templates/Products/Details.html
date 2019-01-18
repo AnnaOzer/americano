@@ -6,10 +6,11 @@
     <a href="/Products/Create" class="btn btn-info">Добавить продукцию</a>
     <table class="table table-striped" style="margin-top:20px">
         <tr>
-            <th></th><th></th><th></th><th></th>
+            <th></th><th></th><th></th><th></th><th></th>
         </tr>
         {% for item in items %}
             <tr>
+                <td>{{ item.Pk }}</td>
                 <td>{{ item.labName }}</td>
                 <td><a href="/Products/One/?id={{ item.Pk }}" class="btn btn-success">Цеховая рецептура</a></td>
                 <!--<td><t4:block path="//Products/DeclaratorEu/(id={{ item.Pk }})" /></td>-->

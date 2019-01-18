@@ -7,6 +7,7 @@
     <a href="/Products/Details" class="btn btn-success">Детальный просмотр</a>
     <table class="table table-striped" style="margin-top:20px">
         <tr>
+            <th></th>
             <th>Лабораторное название</th>
             <th>Официальное русское название</th>
             <th>Официальное английское название</th>
@@ -20,6 +21,7 @@
         </tr>
         {% for item in items %}
         <tr>
+            <td>{{ item.Pk }}</td>
             <td>{{ item.labName }}</td>
             <td>{{ item.rusName }}</td>
             <td>{{ item.engName }}</td>

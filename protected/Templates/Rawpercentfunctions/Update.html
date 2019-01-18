@@ -1,0 +1,21 @@
+{% extends 'Index.html' %}
+
+{% block content %}
+
+<form action="/Rawpercentfunctions/Updatesave" method="post">
+
+    <input type="hidden" value="{{ rawpercent.Pk }}" name="rawpercent[id]">
+    <input type="hidden" value="{{ item.Pk }}" name="rawpercent.product.id">
+
+    <h1>Продукт: {{ item.labName }}</h1>
+    <h2>Сырье: {{ rawpercent.raw.title }}</h2>
+
+  \
+
+    <h3>выбрать функции:</h3>
+    <p><input type="text" value="{{ rawpercent.whyAdded }}" name="rawpercent[whyAdded]" size="80"></p>
+
+    <input type="submit">
+</form>
+
+{% endblock %}

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Anna's Mega Ingregients Generator v.1.00</title>
+  {{ publishCss() }}
+</head>
+<body>
+
+<div class="container">
+    <div class="page-header">
+        <img src="{{ asset('/Layouts/assets/upperArkadia.png') }}" width="100%" />
+    </div>
+</div>
+{% block content %}{% endblock %}
+
+{{ publishJs() }}
+</body>
+</html>

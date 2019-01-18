@@ -10,6 +10,8 @@ class Productinciorder
     static protected $schema=[
         'columns'=>[
             'order'=>['type'=>'int'],
+            'whyAdded'=> ['type'=>'string'],
+            'listFunctions'=> ['type'=>'string'],
         ],
         'relations'=>[
             'product'=>[

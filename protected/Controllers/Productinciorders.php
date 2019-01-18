@@ -14,7 +14,12 @@ class Productinciorders
 
     public function actionDefault()
     {
-
+        $items = Productinciorder::findAll();
+        foreach ($items as $item ) {
+            $item->product;
+            $item->inname;
+        }
+        $this->data->items = $items;
     }
 
     public function actionUpdate($product_id, $inci_id)

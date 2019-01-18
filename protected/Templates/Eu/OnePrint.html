@@ -1,6 +1,9 @@
-{% extends 'Arkadia.html' %}
+{% extends 'ArkadiaEng.html' %}
 
 {% block content %}
+<br>
+<p>Our ref. № _____ Date _____________</p>
+<br>
 <h3 style="text-align: center">FORMULATION</h3>
 <h3 style="text-align: left">Product Name: {{ item.engName }}</h3>
 
@@ -41,12 +44,12 @@
                                 ({{ inpercent.percentageComment }})
                            {% endif %}
                        </td>
-                       <td>{{ inpercent.inname.casNumber }}</td>
-                       <td>{{ inpercent.inname.ecNumber }}</td>
+                       <td style="min-width: 110px">{{ inpercent.inname.casNumber }}</td>
+                       <td style="min-width: 110px">{{ inpercent.inname.ecNumber }}</td>
 
                     {% if line == 1 %}
 
-                        <td style="min-width: 100px" rowspan="{{ rawpercent.raw.ingroup.inpercents.count }}">{{ rawpercent.intervalpercent.interval | raw }}</td>
+                        <td style="min-width: 115px" rowspan="{{ rawpercent.raw.ingroup.inpercents.count }}">{{ rawpercent.intervalpercent.interval | raw }}</td>
                         <td rowspan="{{ rawpercent.raw.ingroup.inpercents.count }}">{{ rawpercent.whyAdded }}</td>
 
 
@@ -65,6 +68,7 @@
     {% endfor %}
 
 </table>
-
+<br><br><br>
+President of the Company ___________________________ Elena Korobkova
 
 {% endblock %}

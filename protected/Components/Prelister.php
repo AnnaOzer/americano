@@ -34,7 +34,21 @@ class Prelister
                     $x['inci_name'] = $inpercent->inname->inNameEu;
                 }
 
+                $x['casNumber'] = $inpercent->inname->casNumber;
+                $x['ecNumber'] = $inpercent->inname->ecNumber;
+
+
+
+
                 $x['inci_perc'] = $rawpercent->percent * $inpercent->percent / 100000000;
+
+
+                foreach ($item->productinciorders as $productinciorder) {
+
+                    if ($productinciorder->inname->getPk() == $inpercent->inname->getPk() )
+                    $x['whyAdded'] = $productinciorder->whyAdded;
+                }
+
 
                 //$productinciorders = $inpercent->inname->productinciorders;
 
@@ -62,6 +76,11 @@ class Prelister
                 $prelisters[$x['inci_id']]['inname'] = $x['inci_name'];
                 $prelisters[$x['inci_id']]['inorder'] = $x['inci_order'];
                 $prelisters[$x['inci_id']]['inciid'] = $x['inci_id'];
+                $prelisters[$x['inci_id']]['casNumber'] = $x['casNumber'];
+                $prelisters[$x['inci_id']]['ecNumber'] = $x['ecNumber'];
+                $prelisters[$x['inci_id']]['whyAdded'] = $x['whyAdded'];
+
+
 
                 $sprelisters[$x['inci_id']]['inorder'] = $x['inci_order'];
                 $sprelisters[$x['inci_id']]['inperc'] += $x['inci_perc'];

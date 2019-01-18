@@ -1,0 +1,72 @@
+{% extends 'Arkadia.html' %}
+
+{% block content %}
+<h3 style="text-align: center">Additional FORMULATION by INCI</h3>
+<h3 style="text-align: left">Product Name: {{ item.engName }}</h3>
+
+<table class="table table-bordered">
+   <tr>
+       <th>№</th>
+       <th>INCI Name</th>
+       <th>CAS</th>
+       <th>EC</th>
+       <th>%</th>
+       <th>Function</th>
+
+   </tr>
+
+    {% for prelister in item.prelisters %}
+
+
+
+
+
+           <tr>
+               <td>{{ loop.index }}</td>
+
+               <td>
+                   <span class="h4" style="width: 250px">
+                   {{ prelister.inname | upper}}
+
+
+                   </span>
+
+               </td>
+
+
+
+               <td>{{ prelister.casNumber }}</td>
+               <td>{{ prelister.ecNumber }}</td>
+
+
+
+                <td style="min-width: 150px;">
+                    <span class="h4">
+                        {{ prelister.inperc | raw }}
+                    </span>
+                </td>
+                <td>{{ productinciorder.whyAdded }}</td>
+               <!--
+                <td>
+                    {{ rawpercent.listFunctions }}<br>
+                    <a href="/Productinciorders/Update?product_id={{ item.Pk }}&inci_id={{ prelister.inci_id }}">Выбрать функции</a>
+
+                </td>
+                -->
+
+
+
+
+
+
+
+
+            </tr>
+
+
+            {% endfor %}
+
+</table>
+
+
+{% endblock %}
