@@ -1,0 +1,27 @@
+{% extends 'Index.html' %}
+
+{% block content %}
+<div class="container">
+    <h1 style="margin-bottom: 20px">Основные синонимы названий сырья</h1>
+    <a href="/Ingroups/Create" class="btn btn-info">Добавить основной синоним сырья</a>
+    <table class="table table-striped" style="margin-top:20px">
+        <tr>
+            <th>Основной синоним</th>
+            <th><span style="color: orangered">Common name or Trade name</span></th>
+            <th><span style="color: blue">Document name</span></th>
+            <th><span style="color: blue">Billing name</span></th>
+            <th></th>
+        </tr>
+        {% for item in items %}
+
+            <td>{{ item.title }}</td>
+            <td><span style="color: orangered">{{ item.officialName | raw }}</span></td>
+            <td><span style="color: blue">{{ item.documentName | raw }}</span></td>
+            <td><span style="color: forestgreen">{{ item.billingName | raw }}</span></td>
+            <td><a href="/Ingroups/Update/?id={{ item.Pk }}" class="btn btn-default">Редактировать</a></td>
+        </tr>
+        {% endfor %}
+    </table>
+
+</div>
+{% endblock %}

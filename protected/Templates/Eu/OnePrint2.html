@@ -1,0 +1,63 @@
+{% extends 'ArkadiaRusTop.html' %}
+
+{% block content %}
+
+<br>
+<p>Дата ________________ Подпись ________________</p>
+<br>
+
+{% if rawpercent.raw.ingroup.billingName is not sameas(false) %}
+{{ rawpercent.raw.ingroup.billingName | raw }}
+{% else %}
+{{ rawpercent.raw.ingroup.officialName | raw }}
+{% endif %}
+
+
+<h3 style="text-align: center">РЕЦЕПТУРА</h3>
+<h3 style="text-align: left">Название продукции: {{ item.rusName }}</h3>
+
+<table class="table table-striped">
+    <tr>
+        <th>№</th>
+        <th>Components<br>(Common name or <br> Trade name)</th>
+        
+
+        <th>%</th>
+
+
+    </tr>
+
+    {% for rawpercent in item.rawpercents %}
+
+    <tr>
+        <td>{{ loop.index }}</td>
+        <td>
+            {% if rawpercent.raw.ingroup.billingName is not sameas("") %}
+                {{ rawpercent.raw.ingroup.billingName | raw }}
+            {% else %}
+                {{ rawpercent.raw.ingroup.documentName | raw }}
+            {% endif %}
+        </td>
+
+
+
+        <td style="min-width: 115px" >{{ rawpercent.intervalpercent.interval | raw }}</td>
+
+
+
+
+
+
+
+
+
+
+
+    </tr>
+
+    {% endfor %}
+
+</table>
+
+
+{% endblock %}

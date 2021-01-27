@@ -24,12 +24,14 @@
             <th></th>
             <th></th>
             <th></th>
+            <th></th>
         </tr>
         {% for item in items %}
 
             <td>{{ item.title }}</td>
             <td><span style="color: orangered">{{ item.officialName | raw }}</span></td>
             <td><span style="color: blue">{{ item.documentName | raw }}</span></td>
+            <td><span style="color: forestgreen">{{ item.billingName | raw }}</span></td>
             <td>
                 <t4:block path="//Ingroups/RawULister/(id={{ item.Pk }})">
             </td>

@@ -1,0 +1,25 @@
+{% extends 'Index.html' %}
+
+{% block content %}
+<div class="container">
+    <h1 style="margin-bottom: 20px">Задать названию купленного по "Журнал сырья" главный синоним</h1>
+    <form class="container" method="post" action="/Buyrawjournals/Changeingroupsave">
+        <div class="row">
+            <div class="col-xs-4">Названию купленного сырья</div>
+            <div class="col-xs-8">
+                <input type="hidden" name="buyrawjournal[id]" value="{{ item.Pk }}">
+                <input type="text" name="buyrawjournal[title]" value="{{ item.title }}"></div>
+        </div>
+        <div class="row">
+            <div class="col-xs-4">присвоить основной синоним</div>
+            <div class="col-xs-8">
+                {% for mainname in mainnames %}
+                    <input type="radio" name="ingroup[id]" value="{{ mainname.Pk }}">{{ mainname.title }}<Br>
+                {% endfor %}
+
+            </div>
+        </div>
+        <input type="submit" class="btn btn-success">
+    </form>
+</div>
+{% endblock %}

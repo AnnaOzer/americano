@@ -1,0 +1,46 @@
+{% extends 'Index.html' %}
+
+{% block content %}
+<div class="container">
+    <h1 style="margin-bottom: 20px">Журнал сырья</h1>
+    <a href="/Buyrawjournals/Create" class="btn btn-info">Добавить покупку сырья</a>
+    <table class="table table-striped" style="margin-top:20px">
+        <tr>
+            <th>Дата</th>
+            <th>Название сырья, реактива</th>
+            <th>Фирма изготовитель, поставщик</th>
+            <th>Количество</th>
+            <th>Органолептика</th>
+            <th>Дата выпуска. Условия хранения.</th>
+            <th>Цена</th>
+            <th></th>
+        </tr>
+        {% for item in items %}
+        <tr>
+            <td>{{ item.whenbought }}</td>
+
+            <td>
+                {{ item.title }}<br>
+                <span style="color:blue; background-color:yellow">{{ item.ingroup.title }}</spanstyle>
+            </td>
+            <td>{{ item.seller }}</td>
+            <td>{{ item.quantitytxt }}</td>
+            <td>{{ item.organoleptics}}</td>
+            <td>{{ item.storagetxt }}</td>
+            <td>
+                <span style="color:green">{{ item.pricetxt }} txt</span><br>
+                <span style="color:blue">{{ item.pricemycomment }} comment</span><br>
+                <span style="color:red">{{ item.priceeuro }} euro</span><br>
+
+            </td>
+            <td><a href="Changeingroup/?id={{ item.Pk }}" class="btn btn-info">Назначить главный синоним купленного сырья</a><br>
+                <a href="Update/?id={{ item.Pk }}" class="btn btn-info">Редактировать</a><br>
+                <br>
+                <a href="Delete/?id={{ item.Pk }}" class="btn btn-danger">Удалить</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+
+</div>
+{% endblock %}

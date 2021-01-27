@@ -27,6 +27,20 @@ class Ingroups
         
     }
 
+    public function actionDefault2()
+    {
+        $items = Ingroup::findAll(['order'=>'title']);
+
+        foreach ($items as $item) {
+            $item->eu = $item->EuLister($item->getPk());
+            $item->us = $item->UsLister($item->getPk());
+        }
+
+
+        $this->data->items = $items;
+
+    }
+
     public function actionSpisok()
     {
         $items = Ingroup::findAll(['order'=>'title']);
@@ -93,7 +107,7 @@ class Ingroups
         $ing->fill($ingroup)
             ->save();
 
-        $this->redirect('/Ingroups/');
+        $this->redirect('/Ingroups/Default2');
     }
     
     public function actionOne($id=1)

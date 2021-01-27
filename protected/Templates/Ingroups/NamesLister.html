@@ -9,8 +9,8 @@
             <th>Основной синоним</th>
             <th><span style="color: orangered">Common name or Trade name</span></th>
             <th>Прочие цеховые и лабораторные синонимы</th>
-            <th>По-русски для декларации</th>
-            <th></th>
+            <!--<th>По-русски для декларации</th>-->
+            <th>Как в накладных</th>
 
 
         </tr>
@@ -21,8 +21,9 @@
             <td>
                 <t4:block path="//Ingroups/RawULister/(id={{ item.Pk }})"/>
             </td>
-            <td>{{ item.ruName }}</td>
-            <td><a href="/Ingroups/Update/?id={{ item.Pk }}" class="btn btn-default">Редактировать</a></td>
+            <!--<td>{{ item.ruName }}</td>-->
+            <td>{{ item.billingName | raw }}</td>
+            <!--<td><a href="/Ingroups/Update/?id={{ item.Pk }}" class="btn btn-default">Редактировать</a></td>-->
 
 
 

@@ -12,6 +12,7 @@ class Ingroup
             'title'=>['type'=>'string'],
             'documentName'=>['type'=>'text'],
             'officialName'=>['type'=>'text'],
+            'billingName'=>['type'=>'text'],
             'ruName'=>['type'=>'string'],
             'priority'=>['type'=>'int'],
             'exactValue'=>['type'=>'int'],
@@ -34,7 +35,11 @@ class Ingroup
             'ismanufacturers'=>[
                 'type'=>self::HAS_MANY,
                 'model'=>Ismanufacturer::class,
-            ]
+            ],
+            'buyrawjournals'=>[
+                'type'=>self::HAS_MANY,
+                'model'=>Buyrawjournal::class,
+            ],
         ]
     ];
 

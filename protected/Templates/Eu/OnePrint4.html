@@ -1,0 +1,81 @@
+{% extends 'ArkadiaRusBuch.html' %}
+
+{% block content %}
+<br>
+<table>
+    <tr>
+        <td style="width: 50%">&nbsp;</td>
+        <td style="width: 50%">
+            <h5>Утверждаю:</h5>
+            <h5>Президент компании ООО "Лаборатория косметики "Аркадия"</h5>
+            <h5>______________________ Е. В. Коробкова</h5>
+            <h5>"___" _________________ 20___ г.</h5>
+        </td>
+    </tr>
+</table>
+
+<br>
+<br>
+
+
+
+<h5 style="text-align: center">{{ item.rusName }}</h5>
+
+<table class="table table-striped table-condensed">
+    <tr>
+        <th>№</th>
+        <th>Ингредиенты</th>
+        
+
+        <th>Содержание, %</th>
+
+
+    </tr>
+
+    {% for rawpercent in item.rawpercents %}
+
+    <tr>
+        <td>{{ loop.index }}</td>
+        <td>
+            {% if rawpercent.raw.ingroup.billingName is not sameas("") %}
+                {{ rawpercent.raw.ingroup.billingName | raw }}
+            {% else %}
+                {{ rawpercent.raw.ingroup.documentName | raw }}
+            {% endif %}
+        </td>
+
+
+
+        <td style="min-width: 115px" >{{ rawpercent.intervalpercent.interval | raw }}</td>
+
+
+
+
+
+
+
+
+
+
+
+    </tr>
+
+    {% endfor %}
+
+</table>
+
+
+
+
+<table>
+    <tr>
+
+        <td>
+            <h5>Заведующая ИЛ ___________________ О. А. Рыжова</h5>
+
+        </td>
+    </tr>
+</table>
+
+
+{% endblock %}

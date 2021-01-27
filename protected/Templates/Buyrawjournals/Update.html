@@ -1,0 +1,51 @@
+{% extends 'Index.html' %}
+
+{% block content %}
+<div class="container">
+    <h1 style="margin-bottom: 20px">Добавление новой покупки сырья</h1>
+    <form class="container" method="post" action="/Buyrawjournals/Updatesave/?id={{ item.Pk }}">
+
+        <input type="hidden" name="buyrawjournal[id]" value="{{ item.Pk }}">
+
+        <div class="row">
+            <div class="col-xs-4">Дата покупки</div>
+            <div class="col-xs-8"><input type="date" name="buyrawjournal[whenbought]" value="{{ item.whenbought }}" size="100"> </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-4">Название сырья, реактива</div>
+            <div class="col-xs-8"><input type="text" name="buyrawjournal[title]" value="{{ item.title }}" size="100"> </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-4">Фирма изготовитель, поставщик</div>
+            <div class="col-xs-8"><input type="text" name="buyrawjournal[seller]" value="{{ item.seller }}" size="100"> </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-4">Количество</div>
+            <div class="col-xs-8"><input type="text" name="buyrawjournal[quantitytxt]" value="{{ item.quantitytxt }}" size="100"> </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-4">Органолептика</div>
+            <div class="col-xs-8"><input type="text" name="buyrawjournal[organoleptics]" value="{{ item.organoleptics }}" size="100"> </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-4">Дата выпуска. Условия хранения.</div>
+            <div class="col-xs-8"><input type="text" name="buyrawjournal[storagetxt]" value="{{ item.storagetxt }}" size="100"> </div>
+        </div>
+        <div class="row" style="color:green">
+            <div class="col-xs-4">Цена по журналу</div>
+            <div class="col-xs-8"><input type="text" name="buyrawjournal[pricetxt]" value="{{ item.pricetxt }}" size="100"> </div>
+        </div>
+        <div class="row" style="color:blue">
+            <div class="col-xs-4">Цена комментарий</div>
+            <div class="col-xs-8"><input type="text" name="buyrawjournal[pricemycomment]" value="{{ item.pricemycomment }}" size="100"> </div>
+        </div>
+        <div class="row" style="color:red">
+            <div class="col-xs-4">Цена в евро с НДС</div>
+            <div class="col-xs-8"><input type="text" name="buyrawjournal[priceeuro]" value="{{ item.priceeuro }}" size="100"> </div>
+        </div>
+        <input type="submit" class="btn btn-info">
+
+
+    </form>
+</div>
+{% endblock %}

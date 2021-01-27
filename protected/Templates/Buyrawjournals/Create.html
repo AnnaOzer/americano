@@ -1,0 +1,40 @@
+{% extends 'Index.html' %}
+
+{% block content %}
+<div class="container">
+    <h1 style="margin-bottom: 20px">Добавление новой покупки сырья</h1>
+    <form class="container" method="post" action="/Buyrawjournals/Save">
+
+        <div class="row">
+            <div class="col-xs-4">Дата покупки</div>
+            <div class="col-xs-8"><input type="date" name="buyrawjournal[whenbought]"> </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-4">Название сырья, реактива</div>
+            <div class="col-xs-8"><input type="text" name="buyrawjournal[title]"> </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-4">Фирма изготовитель, поставщик</div>
+            <div class="col-xs-8"><input type="text" name="buyrawjournal[seller]"> </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-4">Количество</div>
+            <div class="col-xs-8"><input type="text" name="buyrawjournal[quantitytxt]"> </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-4">Органолептика</div>
+            <div class="col-xs-8"><input type="text" name="buyrawjournal[organoleptics]"> </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-4">Дата выпуска. Условия хранения.</div>
+            <div class="col-xs-8"><input type="text" name="buyrawjournal[storagetxt]"> </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-4">Цена</div>
+            <div class="col-xs-8"><input type="text" name="buyrawjournal[pricetxt]"> </div>
+        </div>
+
+        <input type="submit" class="btn btn-info">
+    </form>
+</div>
+{% endblock %}

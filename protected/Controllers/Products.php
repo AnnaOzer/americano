@@ -10,6 +10,7 @@ use App\Models\Rawpercent;
 use App\Models\Premix;
 use App\Models\Premixinproduct;
 use T4\Mvc\Controller;
+use App\Models\Buyrawjournal;
 
 class Products
     extends Controller
@@ -90,6 +91,7 @@ class Products
         }
         
         // повторить для премиксов
+        /* cut1
         if (0 != $item->premixinproducts) {
 
             $item->premixinproducts = $item->premixinproducts->sort(
@@ -104,7 +106,7 @@ class Products
             $line->premix;
         }
         
-        
+        cut1 */
         
         $sum=0;
         
@@ -129,6 +131,65 @@ class Products
 
         
     }
+
+
+    public function actionOneprice($id)
+    {
+        $item = Product::findByPK($id);
+        if (empty($item)) {
+            $this->redirect('/Products/');
+        }
+
+        // сырье
+        if (0 != $item->rawpercents) {
+
+            $item->rawpercents = $item->rawpercents->sort(
+                function ($x1, $x2) {
+                    return $x2->percent <=> $x1->percent;
+                }
+            );
+        }
+        foreach ($item->rawpercents as $line)
+        {
+
+                $line->raw->ingroup->recentbuyrawjournal = Buyrawjournal::find([
+                    'where' => '__ingroup_id='. $line->raw->ingroup->getPk(),
+                    'order by'=>'whenbought',
+                    'limit'=>'1'
+                ]);
+        }
+
+
+
+        $sum=0;
+        $sumeuro=0;
+
+        // сырье
+        foreach ($item->rawpercents as $rawpercent)
+        {
+            $sum+=$rawpercent->percent;
+            $rawpercent->euroimpact=
+                $rawpercent->percent * $rawpercent->raw->ingroup->recentbuyrawjournal->priceeuro/100000;
+            $sumeuro+=$rawpercent->euroimpact;
+        }
+
+
+
+        $item->sumPercent =$sum;
+        $item->freePercent = 100000-$sum;
+
+        $item->sumeuro=$sumeuro;
+
+
+        $this->data->item = $item;
+
+
+    }
+
+    public function actionSingle($id){
+
+    }
+
 
     public function actionOnepremix($id){
         $item=Product::findByPK($id);
@@ -162,7 +223,8 @@ class Products
 
 
     }
-    
+
+
     public function actionAdd($id)
     {
         $product = Product::findByPK($id);
